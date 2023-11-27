@@ -1,7 +1,12 @@
 import "./App.css";
+import Body from "./Components/Body";
 
 const App = () => {
-  return <div className="text-3xl text-green-600">Netflix</div>;
+  return (
+    <>
+      <Body />
+    </>
+  );
 };
 
 export default App;
