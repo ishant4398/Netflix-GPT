@@ -1,34 +1,40 @@
 import React, { useEffect, useRef, useState } from "react";
 import { validateSignIn } from "../Utils/Validations/validations";
+import { signIn, signUp } from "../Utils/Authentication/authentication";
 
 const SignIn_Form = () => {
   const errObj = {
     name: null,
     email: null,
     password: null,
+    apiError: null,
   };
 
   const [isSignIn, setIsSignIn] = useState(true);
   const [error, setError] = useState(errObj);
 
-  const name = useRef(null);
-  const email = useRef(null);
-  const password = useRef(null);
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   useEffect(() => {
     setError(errObj);
   }, [isSignIn]);
 
-  const handleSignInButton = () => {
-    const isValid = validateSignIn(
-      isSignIn,
-      email.current?.value,
-      password.current?.value,
-      name.current?.value,
-      setError
-    );
-    console.log("Form Valid:", isValid);
-    console.log("error:", error);
+  const handleSignInAndSignUp = () => {
+    const name = nameRef.current?.value;
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+
+    const isValid = validateSignIn(isSignIn, email, password, name, setError);
+
+    if (isValid) {
+      if (isSignIn) {
+        signIn(email, password, setError);
+      } else {
+        signUp(email, password, setError);
+      }
+    }
   };
 
   const toggleSignIn = () => {
@@ -45,7 +51,7 @@ const SignIn_Form = () => {
         {!isSignIn && (
           <>
             <input
-              ref={name}
+              ref={nameRef}
               type="text"
               placeholder="Name"
               className="w-full rounded-md mt-4 px-4 py-3 bg-gray-800"
@@ -55,7 +61,7 @@ const SignIn_Form = () => {
         )}
 
         <input
-          ref={email}
+          ref={emailRef}
           type="text"
           placeholder="Email or Phone Number"
           className="w-full rounded-md mt-4 px-4 py-3 bg-gray-800"
@@ -63,16 +69,17 @@ const SignIn_Form = () => {
         <p className="font-semibold text-yellow-500 py-2">{error?.email}</p>
 
         <input
-          ref={password}
+          ref={passwordRef}
           type="password"
           placeholder="Password"
           className="w-full rounded-md mt-4 px-4 py-3 bg-gray-800"
         ></input>
         <p className="font-semibold text-yellow-500 py-2">{error?.password}</p>
+        <p className="font-semibold text-yellow-500 py-2">{error?.apiError}</p>
 
         <button
           className="w-full mt-5 px-4 py-3 rounded-md bg-red-700"
-          onClick={handleSignInButton}
+          onClick={handleSignInAndSignUp}
         >
           {isSignIn ? "Sign In" : "Sign Up"}
         </button>
