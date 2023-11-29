@@ -1,19 +1,22 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../../firebase";
 
-export const signUp = async (email, password, setError) => {
+export const signUp = async (email, password, name, setError) => {
   let result = null;
 
   try {
-    const { user } = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    console.log(user);
+    await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: "https://example.com/jane-q-user/profile.jpg",
+    });
+
+    return auth.currentUser;
   } catch (error) {
     result = `${error.code}: ${error.message}`;
   } finally {
@@ -27,14 +30,24 @@ export const signIn = async (email, password, setError) => {
   let result = null;
 
   try {
-    const { user } = await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email, password);
 
-    console.log(user);
+    return auth.currentUser;
   } catch (error) {
     result = `${error.code}: ${error.message}`;
   } finally {
     setError((err) => {
       return { ...err, apiError: result };
     });
+  }
+};
+
+export const signOutUser = async () => {
+  let result = null;
+
+  try {
+    await signOut(auth);
+  } catch (error) {
+    result = `${error.code}: ${error.message}`;
   }
 };

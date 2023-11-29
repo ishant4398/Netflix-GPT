@@ -1,3 +1,5 @@
+import { flushSync } from "react-dom";
+
 export const validateSignIn = (isSignIn, email, password, name, setError) => {
   let isValid = true;
 
@@ -7,43 +9,14 @@ export const validateSignIn = (isSignIn, email, password, name, setError) => {
 
   const isNameValid = name && name.trim() ? true : false;
 
-  if (!isEmailValid) {
-    isValid = false;
+  setError((err) => ({
+    ...err,
+    email: isEmailValid ? null : "Please enter a valid email",
+    password: isPasswordValid ? null : "Please enter a valid password",
+    name: isSignIn || isNameValid ? null : "Please enter a valid name",
+  }));
 
-    setError((err) => {
-      return { ...err, email: "Please enter valid email" };
-    });
-  } else {
-    setError((err) => {
-      return { ...err, email: null };
-    });
-  }
-
-  if (!isPasswordValid) {
-    isValid = false;
-
-    setError((err) => {
-      return { ...err, password: "Please enter valid password" };
-    });
-  } else {
-    setError((err) => {
-      return { ...err, password: null };
-    });
-  }
-
-  if (!isSignIn) {
-    if (!isNameValid) {
-      isValid = false;
-
-      setError((err) => {
-        return { ...err, name: "Please enter valid name" };
-      });
-    } else {
-      setError((err) => {
-        return { ...err, name: null };
-      });
-    }
-  }
+  isValid = isEmailValid && isPasswordValid && (isSignIn || isNameValid);
 
   return isValid;
 };

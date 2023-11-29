@@ -1,22 +1,35 @@
-import React from "react";
-import Login from "./Login";
-import Browse from "./Browse";
+import { useEffect } from "react";
 import Footer from "./Footer";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-const appRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <Login />,
-  },
-  {
-    path: "/browse",
-    element: <Browse />,
-  },
-]);
+import Header from "./Header";
+import { Outlet, useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../Utils/Slices/userSlice";
+import { auth } from "../firebase";
 
 const Body = () => {
-  return <RouterProvider router={appRouter} />;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // After Sign In / Sign Up
+      } else {
+        // After Sign Out
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+  }, []);
+
+  return (
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
 };
 
 export default Body;
