@@ -3,7 +3,6 @@ import { validateSignIn } from "../Utils/Validations/validations";
 import { signIn, signUp } from "../Utils/Authentication/authentication";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Utils/Slices/userSlice";
-import { useNavigate } from "react-router-dom";
 
 const SignIn_Form = () => {
   const errObj = {
@@ -18,7 +17,6 @@ const SignIn_Form = () => {
   const [passwordType, setPasswordType] = useState("password");
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const nameRef = useRef(null);
   const emailRef = useRef(null);
@@ -28,7 +26,7 @@ const SignIn_Form = () => {
     setError(errObj);
   }, [isSignIn]);
 
-  const addUserAndNavigate = (user) => {
+  const addUserToRedux = (user) => {
     const { uid, email, displayName, photoURL } = user;
 
     const userObj = {
@@ -39,7 +37,6 @@ const SignIn_Form = () => {
     };
 
     dispatch(addUser(userObj));
-    navigate("/browse");
   };
 
   const handleSignInAndSignUp = async () => {
@@ -60,7 +57,7 @@ const SignIn_Form = () => {
         }
 
         if (user) {
-          addUserAndNavigate(user);
+          addUserToRedux(user);
         }
       } catch (err) {
         console.log(err);

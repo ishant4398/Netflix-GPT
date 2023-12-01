@@ -43,11 +43,10 @@ export const signIn = async (email, password, setError) => {
 };
 
 export const signOutUser = async () => {
-  let result = null;
-
   try {
     await signOut(auth);
   } catch (error) {
-    result = `${error.code}: ${error.message}`;
+    const result = `${error.code}: ${error.message}`;
+    console.log(result);
   }
 };
