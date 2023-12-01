@@ -11,10 +11,6 @@ const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Firebase Authentication Methods:-
-  // Below code is commented as updated user is not adding to redux store
-  // Because updateProfile method for updating displayName and photoURL does not trigger onAuthStateChanged method again after createUserWithEmailAndPassword (Sign Up Method)
-
   const addUserToRedux = (user) => {
     const { uid, email, displayName, photoURL } = user;
 
