@@ -1,9 +1,12 @@
 import React from "react";
+import MovieTrailer from "./Movies/MovieTrailer";
+import MovieSuggestions from "./Movies/MovieSuggestions";
 
 const Browse = () => {
   return (
-    <div className="absolute mt-20">
-      <h2 className="m-4">Browse</h2>
+    <div className="absolute">
+      <MovieTrailer />
+      <MovieSuggestions />
     </div>
   );
 };

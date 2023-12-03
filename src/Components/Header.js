@@ -12,11 +12,11 @@ const Header = () => {
 
   return (
     <>
-      <div className="absolute w-full px-4 py-1 bg-gradient-to-b from-black z-10 flex justify-between">
-        <img className="w-52" src={Netflix_Logo} alt="logo" />
+      <div className="absolute w-full px-4 py-1 bg-gradient-to-b from-black z-20 flex justify-between">
+        <img className="w-52 m-2" src={Netflix_Logo} alt="logo" />
         {currentUser && (
           <div className="flex">
-            <div>
+            {/* <div>
               <img
                 src={PROFILE_PIC_ICON}
                 alt="profile-pic"
@@ -25,10 +25,10 @@ const Header = () => {
               <p className="-mt-4 ml-3 text-blue-700 font-bold">
                 {currentUser?.displayName ? `(${currentUser.displayName})` : ""}
               </p>
-            </div>
+            </div> */}
 
             <button
-              className="text-white font-bold h-9 p-2 m-4 my-6 pt-1"
+              className="text-white font-bold h-9 p-2 m-4 my-0 mr-6 pt-1"
               onClick={handleSignOut}
             >
               Sign Out
