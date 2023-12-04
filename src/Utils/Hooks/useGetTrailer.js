@@ -4,7 +4,7 @@ import { fetchTrailer } from "../thunks";
 
 const useGetTrailer = (movieId) => {
   const dispatch = useDispatch();
-  const trailer = useSelector((store) => store.movies.trailer);
+  const trailer = useSelector((store) => store.movies?.trailer);
 
   useEffect(() => {
     dispatch(fetchTrailer(movieId));

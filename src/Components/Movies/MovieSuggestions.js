@@ -1,7 +1,24 @@
 import React from "react";
+import MoviesList from "./MoviesList";
+import useGetNowPlayingMovies from "../../Utils/Hooks/useGetNowPlayingMovies";
+import useGetPopularMovies from "../../Utils/Hooks/useGetPopularMovies";
+import useGetTopRatedMovies from "../../Utils/Hooks/useGetTopRatedMovies";
+import useGetUpcomingMovies from "../../Utils/Hooks/useGetUpcomingMovies";
 
 const MovieSuggestions = () => {
-  return <div>MovieSuggestions</div>;
+  const nowPlayingMovies = useGetNowPlayingMovies();
+  const popularMovies = useGetPopularMovies();
+  const topRatedMovies = useGetTopRatedMovies();
+  const upcomingMovies = useGetUpcomingMovies();
+
+  return (
+    <div className="mt-[750px]">
+      <MoviesList title={"Now Playing"} movies={nowPlayingMovies} />
+      <MoviesList title={"Popular"} movies={popularMovies} />
+      <MoviesList title={"Top Rated"} movies={topRatedMovies} />
+      <MoviesList title={"Upcoming"} movies={upcomingMovies} />
+    </div>
+  );
 };
 
 export default MovieSuggestions;

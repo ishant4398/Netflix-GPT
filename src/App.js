@@ -5,6 +5,7 @@ import store from "./Utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./Components/Login";
 import Browse from "./Components/Browse";
+import "./App.css";
 
 const appRouter = createBrowserRouter([
   {

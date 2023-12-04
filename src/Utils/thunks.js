@@ -23,16 +23,59 @@ export const signIn_Thunk = createAsyncThunk(
   }
 );
 
-export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
-  const data = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?page=1",
-    API_OPTIONS_GET
-  );
+export const fetchNowPlayingMovies = createAsyncThunk(
+  "movies/fetchNowPlayingMovies",
+  async () => {
+    const data = await fetch(
+      "https://api.themoviedb.org/3/movie/now_playing?page=1",
+      API_OPTIONS_GET
+    );
 
-  const result = await data.json();
+    const result = await data.json();
 
-  return result.results;
-});
+    return result.results;
+  }
+);
+
+export const fetchPopularMovies = createAsyncThunk(
+  "movies/fetchPopularMovies",
+  async () => {
+    const data = await fetch(
+      "https://api.themoviedb.org/3/movie/popular?page=1",
+      API_OPTIONS_GET
+    );
+
+    const result = await data.json();
+
+    return result.results;
+  }
+);
+export const fetchTopRatedMovies = createAsyncThunk(
+  "movies/fetchTopRatedMovies",
+  async () => {
+    const data = await fetch(
+      "https://api.themoviedb.org/3/movie/top_rated?page=1",
+      API_OPTIONS_GET
+    );
+
+    const result = await data.json();
+
+    return result.results;
+  }
+);
+export const fetchUpcomingMovies = createAsyncThunk(
+  "movies/fetchUpcomingMovies",
+  async () => {
+    const data = await fetch(
+      "https://api.themoviedb.org/3/movie/upcoming?page=1",
+      API_OPTIONS_GET
+    );
+
+    const result = await data.json();
+
+    return result.results;
+  }
+);
 
 export const fetchTrailer = createAsyncThunk(
   "movies/fetchTrailer",

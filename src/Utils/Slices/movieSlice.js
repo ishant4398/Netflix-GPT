@@ -1,17 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchMovies, fetchTrailer } from "../thunks";
+import {
+  fetchNowPlayingMovies,
+  fetchPopularMovies,
+  fetchTopRatedMovies,
+  fetchTrailer,
+  fetchUpcomingMovies,
+} from "../thunks";
 
 const movieSlice = createSlice({
   name: "movies",
   initialState: {
     nowPlaying: [],
+    popular: [],
+    topRated: [],
+    upcoming: [],
     trailer: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchMovies.fulfilled, (state, action) => {
+      .addCase(fetchNowPlayingMovies.fulfilled, (state, action) => {
         state.nowPlaying = action.payload;
+      })
+      .addCase(fetchPopularMovies.fulfilled, (state, action) => {
+        state.popular = action.payload;
+      })
+      .addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
+        state.topRated = action.payload;
+      })
+      .addCase(fetchUpcomingMovies.fulfilled, (state, action) => {
+        state.upcoming = action.payload;
       })
       .addCase(fetchTrailer.fulfilled, (state, action) => {
         const videos = action.payload;
