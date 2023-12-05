@@ -7,11 +7,13 @@ const MoviesList = ({ title, movies }) => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold">{title}</h1>
-      <div className="flex">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+      <h1 className="text-2xl font-bold text-white my-3">{title}</h1>
+      <div className="flex overflow-x-scroll my-7">
+        <div className="flex">
+          {movies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </div>
       </div>
     </div>
   );

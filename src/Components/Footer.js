@@ -2,8 +2,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="absolute bottom-0">
-      {/* <h1 className="font-bold">Footer</h1> */}
+    <div className="bottom-0">
+      <h1 className="font-bold text-white bg-black px-12 pb-4">
+        @Ishant Kushwaha
+      </h1>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const MovieSuggestions = () => {
   const upcomingMovies = useGetUpcomingMovies();
 
   return (
-    <div className="mt-[750px]">
+    <div className="pt-[700px] px-12 py-12 bg-black w-screen">
       <MoviesList title={"Now Playing"} movies={nowPlayingMovies} />
       <MoviesList title={"Popular"} movies={popularMovies} />
       <MoviesList title={"Top Rated"} movies={topRatedMovies} />

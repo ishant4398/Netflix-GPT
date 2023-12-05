@@ -97,7 +97,7 @@ const SignIn_Form = () => {
         <input
           ref={emailRef}
           type="text"
-          placeholder="Email or Phone Number"
+          placeholder="Email"
           className="w-full rounded-md mt-4 px-4 py-3 bg-gray-800"
         ></input>
         <p className="font-semibold text-yellow-500 py-2">{error?.email}</p>

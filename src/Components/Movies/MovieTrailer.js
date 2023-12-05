@@ -7,6 +7,7 @@ const MovieTrailer = () => {
   const movies = useGetNowPlayingMovies();
   if (!movies) return;
 
+  // Selecting First Movie from the result
   const movie = movies.length ? movies[0] : null;
 
   const { id, original_title, overview } = movie;
