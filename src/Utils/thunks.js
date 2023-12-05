@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { API_OPTIONS_GET } from "./constants";
+import { API_OPTIONS_GET, TMDB_MOVIE_URL } from "./constants";
 
 // We are not using signIn_Thunk
 export const signIn_Thunk = createAsyncThunk(
@@ -41,7 +41,7 @@ export const fetchPopularMovies = createAsyncThunk(
   "movies/fetchPopularMovies",
   async () => {
     const data = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?page=1",
+      TMDB_MOVIE_URL + "popular?page=1",
       API_OPTIONS_GET
     );
 
@@ -54,7 +54,7 @@ export const fetchTopRatedMovies = createAsyncThunk(
   "movies/fetchTopRatedMovies",
   async () => {
     const data = await fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?page=1",
+      TMDB_MOVIE_URL + "top_rated?page=1",
       API_OPTIONS_GET
     );
 
@@ -67,7 +67,7 @@ export const fetchUpcomingMovies = createAsyncThunk(
   "movies/fetchUpcomingMovies",
   async () => {
     const data = await fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?page=1",
+      TMDB_MOVIE_URL + "upcoming?page=1",
       API_OPTIONS_GET
     );
 
@@ -81,7 +81,7 @@ export const fetchTrailer = createAsyncThunk(
   "movies/fetchTrailer",
   async (movieId) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos`,
+      TMDB_MOVIE_URL + movieId + "/videos",
       API_OPTIONS_GET
     );
     const result = await data.json();
