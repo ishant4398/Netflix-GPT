@@ -5,6 +5,7 @@ import Body from "./Components/Body";
 import store from "./Utils/store";
 import Login from "./Components/Login";
 import Browse from "./Components/Browse";
+import Search from "./Components/Search";
 
 const appRouter = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/browse",
         element: <Browse />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
       },
     ],
   },
