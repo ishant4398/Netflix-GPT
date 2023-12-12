@@ -1,11 +1,12 @@
-import "./App.css";
 import { Provider } from "react-redux";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import "./App.css";
 import Body from "./Components/Body";
 import store from "./Utils/store";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./Components/Login";
 import Browse from "./Components/Browse";
-import Search from "./Components/Search";
+import Banner from "./Components/Banner";
+import "./App.css";
 
 const appRouter = createBrowserRouter([
   {
@@ -21,8 +22,12 @@ const appRouter = createBrowserRouter([
         element: <Browse />,
       },
       {
-        path: "/search",
-        element: <Search />,
+        path: "/banner",
+        element: <Banner />,
+      },
+      {
+        path: "/browse",
+        element: <Browse />,
       },
     ],
   },
