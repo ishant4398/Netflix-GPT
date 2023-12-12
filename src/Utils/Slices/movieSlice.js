@@ -15,15 +15,6 @@ const movieSlice = createSlice({
     topRated: [],
     upcoming: [],
     trailer: null,
-    onBanner: false,
-  },
-  reducers: {
-    setBannerTrue: (state, action) => {
-      state.onBanner = true;
-    },
-    setBannerFalse: (state, action) => {
-      state.onBanner = false;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -53,6 +44,6 @@ const movieSlice = createSlice({
   },
 });
 
-export const { setBannerTrue, setBannerFalse } = movieSlice.actions;
+export const {} = movieSlice.actions;
 
 export default movieSlice.reducer;

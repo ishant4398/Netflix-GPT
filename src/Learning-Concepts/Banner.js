@@ -1,18 +1,10 @@
-import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { setBannerTrue } from "../Utils/Slices/movieSlice";
 import useGetPopularMovies from "../Utils/Hooks/useGetPopularMovies";
-import MovieCard from "./Movies/MovieCard";
+import MovieCard from "../Components/Movies/MovieCard";
 
 const Banner = () => {
   const popularMovies = useGetPopularMovies();
   const [activeMovieIndex, setActiveMovieIndex] = useState(0);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setBannerTrue());
-  }, []);
 
   useEffect(() => {
     const timerID = setInterval(() => {

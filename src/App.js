@@ -1,12 +1,10 @@
-import { Provider } from "react-redux";
 import "./App.css";
+import { Provider } from "react-redux";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Body from "./Components/Body";
 import store from "./Utils/store";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./Components/Login";
 import Browse from "./Components/Browse";
-import Banner from "./Components/Banner";
-import "./App.css";
 
 const appRouter = createBrowserRouter([
   {
@@ -16,14 +14,6 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Login />,
-      },
-      {
-        path: "/browse",
-        element: <Browse />,
-      },
-      {
-        path: "/banner",
-        element: <Banner />,
       },
       {
         path: "/browse",
