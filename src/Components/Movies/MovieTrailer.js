@@ -8,7 +8,7 @@ const MovieTrailer = () => {
   if (!movies) return;
 
   // Selecting First Movie from the result
-  const movie = movies.length ? movies[0] : null;
+  const movie = movies[0];
 
   const { id, original_title, overview } = movie;
 

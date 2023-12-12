@@ -15,8 +15,16 @@ const movieSlice = createSlice({
     topRated: [],
     upcoming: [],
     trailer: null,
+    onBanner: false,
   },
-  reducers: {},
+  reducers: {
+    setBannerTrue: (state, action) => {
+      state.onBanner = true;
+    },
+    setBannerFalse: (state, action) => {
+      state.onBanner = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchNowPlayingMovies.fulfilled, (state, action) => {
@@ -45,6 +53,6 @@ const movieSlice = createSlice({
   },
 });
 
-export const {} = movieSlice.actions;
+export const { setBannerTrue, setBannerFalse } = movieSlice.actions;
 
 export default movieSlice.reducer;
