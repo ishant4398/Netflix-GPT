@@ -48,7 +48,7 @@ const Body = () => {
     <>
       <Header />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

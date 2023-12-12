@@ -3,11 +3,11 @@ import { BACKGROUND_IMAGE_URL } from "../Utils/constants";
 
 const Search = () => {
   return (
-    <div className="flex justify-center">
-      <div className="absolute -z-10">
+    <div className="flex justify-center bg-black h-screen">
+      {/* <div className="absolute -z-10">
         <img src={BACKGROUND_IMAGE_URL} alt="netflix-cover-image" />
-      </div>
-      <div className="grid grid-cols-12 w-[55%] mt-28">
+      </div> */}
+      <div className="grid grid-cols-12 w-[55%] mt-28 h-11">
         <input
           className="col-span-10 p-2 px-4 rounded-md"
           type="text"
