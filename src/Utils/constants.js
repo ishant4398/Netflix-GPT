@@ -15,5 +15,20 @@ export const API_OPTIONS_GET = {
   },
 };
 
+export const LANGUAGES = [
+  {
+    key: "en",
+    name: "English",
+  },
+  {
+    key: "hindi",
+    name: "Hindi",
+  },
+  {
+    key: "spanish",
+    name: "Spanish",
+  },
+];
+
 export const TMDB_MOVIE_URL = "https://api.themoviedb.org/3/movie/";
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";

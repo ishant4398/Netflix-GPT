@@ -2,13 +2,17 @@ import React from "react";
 import Netflix_Logo from "../Assets/Netflix_Logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutUser } from "../Utils/Authentication/authentication";
-import { PROFILE_PIC_ICON } from "../Utils/constants";
+import { LANGUAGES, PROFILE_PIC_ICON } from "../Utils/constants";
 import { useNavigate } from "react-router-dom";
 import { toggleGPTSearch } from "../Utils/Slices/gptSlice";
+import { updateCurrentLang } from "../Utils/Slices/configSlice";
+import languageTranslations from "../Utils/languageTranslations";
 
 const Header = () => {
   const currentUser = useSelector((store) => store.user);
   const showGPTSearch = useSelector((store) => store.gpt.showGPTSearch);
+  const currentLang = useSelector((store) => store.config.currentLang);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -26,13 +30,31 @@ const Header = () => {
     dispatch(toggleGPTSearch());
   };
 
+  const handleChangeLanguage = (e) => {
+    dispatch(updateCurrentLang(e.target.value));
+  };
+
   return (
     <>
       <div className="absolute w-full px-4 py-1 bg-gradient-to-b from-black z-20 flex justify-between">
         <img className="w-52 m-2" src={Netflix_Logo} alt="logo" />
-        {currentUser && (
-          <div className="flex">
-            {/* <div>
+        <div className="flex">
+          <select
+            className="text-white font-bold h-9 p-2 m-4 my-0 mr-6 pt-1 bg-black"
+            placeholder="Select Language"
+            value={currentLang}
+            onChange={handleChangeLanguage}
+          >
+            {LANGUAGES.map((language) => (
+              <option key={language.key} value={language.key}>
+                {language.name}
+              </option>
+            ))}
+          </select>
+
+          {currentUser && (
+            <div className="flex">
+              {/* <div>
               <img
                 src={PROFILE_PIC_ICON}
                 alt="profile-pic"
@@ -42,30 +64,32 @@ const Header = () => {
                 {currentUser?.displayName ? `(${currentUser.displayName})` : ""}
               </p>
             </div> */}
-            {showGPTSearch && (
+
+              {showGPTSearch && (
+                <button
+                  className="text-white font-bold h-9 p-2 m-4 my-0 mr-6 pt-1"
+                  onClick={handleNavToBrowse}
+                >
+                  {languageTranslations[currentLang].home}
+                </button>
+              )}
+              {!showGPTSearch && (
+                <button
+                  className="text-white font-bold h-9 p-2 m-4 my-0 mr-6 pt-1"
+                  onClick={handleNavToSearch}
+                >
+                  🔍 {languageTranslations[currentLang].gptSearchButtonText}
+                </button>
+              )}
               <button
                 className="text-white font-bold h-9 p-2 m-4 my-0 mr-6 pt-1"
-                onClick={handleNavToBrowse}
+                onClick={handleSignOut}
               >
-                Home
+                {languageTranslations[currentLang].signOutButtonText}
               </button>
-            )}
-            {!showGPTSearch && (
-              <button
-                className="text-white font-bold h-9 p-2 m-4 my-0 mr-6 pt-1"
-                onClick={handleNavToSearch}
-              >
-                🔍 GPT Search
-              </button>
-            )}
-            <button
-              className="text-white font-bold h-9 p-2 m-4 my-0 mr-6 pt-1"
-              onClick={handleSignOut}
-            >
-              Sign Out
-            </button>
-          </div>
-        )}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
