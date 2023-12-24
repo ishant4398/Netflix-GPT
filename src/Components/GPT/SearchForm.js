@@ -5,15 +5,14 @@ import {
   fetchGPT_SearchResults,
   fetchMovieSearchResults,
 } from "../../Utils/thunks";
+import { useNavigate } from "react-router";
 
-const Search = () => {
+const SearchForm = () => {
   const currentLang = useSelector((store) => store.config.currentLang);
   const GPT_Search_Results = useSelector((store) => store.gpt.searchResults);
-  const TMDB_Movie_SearchResult = useSelector(
-    (store) => store.movies.searchMovieResults
-  );
   const searchInputRef = useRef();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getTMDBSearchResult = async (TMDB_SearchQuery) => {
     // TMDB_SearchQuery = ['Andaz Apna Apna', 'Chupke Chupke', 'Golmaal', 'Padosan', 'Chashme Buddoor']
@@ -30,6 +29,7 @@ const Search = () => {
   const handleSearchClick = async () => {
     const searchValue = searchInputRef.current.value.trim();
     if (searchValue) {
+      navigate("?searchQuery=" + searchValue);
       await getGPTSearchResults(); // API Not working due to failed purchase plan.
 
       // If result from GPT API exists then fetch data according to it otherwise fetch data only according to user input not on the basis of GPT result.
@@ -47,7 +47,7 @@ const Search = () => {
 
   return (
     <form
-      className="flex justify-center bg-black h-screen"
+      className="flex justify-center bg-black"
       onSubmit={(e) => e.preventDefault()}
     >
       <div className="grid grid-cols-12 w-[55%] mt-28 h-11">
@@ -56,18 +56,18 @@ const Search = () => {
           className="col-span-10 p-2 px-4 rounded-md"
           type="text"
           placeholder={
-            languageTranslations[currentLang].gptSearchPlaceholderValue
+            languageTranslations[currentLang]?.gptSearchPlaceholderValue
           }
         ></input>
         <button
           className="col-span-2 p-2 mx-4 bg-red-700 text-white font-semibold rounded-md"
           onClick={handleSearchClick}
         >
-          {languageTranslations[currentLang].gptSearchButton}
+          {languageTranslations[currentLang]?.gptSearchButton}
         </button>
       </div>
     </form>
   );
 };
 
-export default Search;
+export default SearchForm;

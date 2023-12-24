@@ -5,12 +5,14 @@ import Body from "./Components/Body";
 import store from "./Utils/store";
 import Login from "./Components/Authentication/Login";
 import Browse from "./Components/Browse";
-import Search from "./Components/GPT/Search";
+import MovieSearch from "./Components/GPT/MovieSearch";
+import Error from "./Components/Error";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <Body />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -22,7 +24,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/search",
-        element: <Search />,
+        element: <MovieSearch />,
       },
     ],
   },

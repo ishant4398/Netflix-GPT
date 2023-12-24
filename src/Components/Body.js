@@ -45,11 +45,11 @@ const Body = () => {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col">
       <Header />
       <Outlet />
-      <Footer />
-    </>
+      {/* <Footer /> */}
+    </div>
   );
 };
 

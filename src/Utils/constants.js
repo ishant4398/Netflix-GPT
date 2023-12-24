@@ -30,6 +30,19 @@ export const LANGUAGES = [
   },
 ];
 
+export const MOVIE_LANGUAGES = {
+  en: "English",
+  hi: "Hindi",
+  kn: "Kannad",
+  te: "Telugu",
+  gu: "Gujrati",
+  ta: "Tamil",
+  bn: "Bangla",
+  pa: "Punjabi",
+  or: "Oriya",
+  th: "Thai",
+};
+
 export const TMDB_MOVIE_URL = "https://api.themoviedb.org/3/movie/";
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 export const OPEN_AI_KEY =

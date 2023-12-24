@@ -1,7 +1,8 @@
 const languageTranslations = {
   en: {
     websiteOwner: "Ishant Kushwaha",
-    gptSearchPlaceholderValue: "Search your movies using AI",
+    // gptSearchPlaceholderValue: "Search your movies using AI",
+    gptSearchPlaceholderValue: "Search movies",
     gptSearchButton: "Search",
     nowPlayingMovieHeading: "Now playing",
     popularMoviesHeading: "Popular",
@@ -20,10 +21,13 @@ const languageTranslations = {
     signUpHeading: "Sign Up",
     alreadyUserText: "Already a user? Sign In.",
     newToNetflix: "New to Netflix? Sign Up now.",
+    movieSearchResult: "Search Results",
+    noSearchResultFound: "Sorry, No search results found",
   },
   hindi: {
     websiteOwner: "इशांत कुशवाह",
-    gptSearchPlaceholderValue: "AI का उपयोग करके अपनी फिल्में खोजें",
+    // gptSearchPlaceholderValue: "AI का उपयोग करके अपनी फिल्में खोजें",
+    gptSearchPlaceholderValue: "फिल्में खोजें",
     gptSearchButton: "खोज",
     nowPlayingMovieHeading: "अभी चलने वाली फिल्म्स",
     popularMoviesHeading: "लोकप्रिय",
@@ -42,10 +46,13 @@ const languageTranslations = {
     signUpHeading: "साइन अप करें",
     alreadyUserText: "पहले से ही एक उपयोगकर्ता? साइन इन.",
     newToNetflix: "नेटफ्लिक्स पर नए हैं? साइन अप करें.",
+    movieSearchResult: "खोज के परिणाम",
+    noSearchResultFound: "क्षमा करें, कोई खोज परिणाम नहीं मिला",
   },
   spanish: {
     websiteOwner: "Ishant Kushwaha",
-    gptSearchPlaceholderValue: "Busca tus películas usando IA",
+    // gptSearchPlaceholderValue: "Busca tus películas usando IA",
+    gptSearchPlaceholderValue: "buscar películas",
     gptSearchButton: "Buscar",
     nowPlayingMovieHeading: "Jugando ahora",
     popularMoviesHeading: "Popular",
@@ -64,6 +71,9 @@ const languageTranslations = {
     signUpHeading: "Registrarse",
     alreadyUserText: "¿Ya eres usuario? Iniciar sesión.",
     newToNetflix: "¿Nuevo en Netflix? Regístrate ahora.",
+    movieSearchResult: "Resultados de la búsqueda",
+    noSearchResultFound:
+      "Lo sentimos, no se encontraron resultados de búsqueda",
   },
 };
 

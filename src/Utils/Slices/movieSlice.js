@@ -17,6 +17,12 @@ const movieSlice = createSlice({
     upcoming: [],
     trailer: null,
     searchMovieResults: [],
+    isMovieResultsLoading: false,
+  },
+  reducers: {
+    clearSearchMovieResults: (state) => {
+      state.searchMovieResults = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -43,6 +49,9 @@ const movieSlice = createSlice({
           state.trailer = trailer;
         }
       })
+      .addCase(fetchMovieSearchResults.pending, (state) => {
+        state.isMovieResultsLoading = true;
+      })
       .addCase(fetchMovieSearchResults.fulfilled, (state, action) => {
         const searchResults = action.payload;
 
@@ -53,11 +62,15 @@ const movieSlice = createSlice({
           return acc;
         }, []);
 
+        state.isMovieResultsLoading = false;
         state.searchMovieResults = moviesArr;
+      })
+      .addCase(fetchMovieSearchResults.rejected, (state) => {
+        state.isMovieResultsLoading = false;
       });
   },
 });
 
-export const {} = movieSlice.actions;
+export const { clearSearchMovieResults } = movieSlice.actions;
 
 export default movieSlice.reducer;
