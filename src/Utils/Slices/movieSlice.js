@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  fetchMovieSearchResults,
   fetchNowPlayingMovies,
   fetchPopularMovies,
   fetchTopRatedMovies,
@@ -15,6 +16,7 @@ const movieSlice = createSlice({
     topRated: [],
     upcoming: [],
     trailer: null,
+    searchMovieResults: [],
   },
   extraReducers: (builder) => {
     builder
@@ -40,6 +42,18 @@ const movieSlice = createSlice({
           }
           state.trailer = trailer;
         }
+      })
+      .addCase(fetchMovieSearchResults.fulfilled, (state, action) => {
+        const searchResults = action.payload;
+
+        const moviesArr = searchResults?.reduce((acc, curr) => {
+          if (curr.results?.length) {
+            acc = [...acc, ...curr.results];
+          }
+          return acc;
+        }, []);
+
+        state.searchMovieResults = moviesArr;
       });
   },
 });

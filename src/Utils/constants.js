@@ -32,3 +32,5 @@ export const LANGUAGES = [
 
 export const TMDB_MOVIE_URL = "https://api.themoviedb.org/3/movie/";
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
+export const OPEN_AI_KEY =
+  "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";
