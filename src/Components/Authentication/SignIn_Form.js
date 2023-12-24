@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { validateSignIn } from "../Utils/Validations/validations";
-import { signIn, signUp } from "../Utils/Authentication/authentication";
+import { validateSignIn } from "../../Utils/Validations/validations";
+import { signIn, signUp } from "../../Utils/Authentication/authentication";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../Utils/Slices/userSlice";
-import languageTranslations from "../Utils/languageTranslations";
+import { addUser } from "../../Utils/Slices/userSlice";
+import languageTranslations from "../../Utils/languageTranslations";
 
 const SignIn_Form = () => {
   const errObj = {

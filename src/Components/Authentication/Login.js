@@ -1,6 +1,6 @@
 import React from "react";
 import SignIn_Form from "./SignIn_Form";
-import { BACKGROUND_IMAGE_URL } from "../Utils/constants";
+import { BACKGROUND_IMAGE_URL } from "../../Utils/constants";
 
 const Login = () => {
   return (

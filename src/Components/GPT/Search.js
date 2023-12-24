@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import languageTranslations from "../Utils/languageTranslations";
-import { BACKGROUND_IMAGE_URL } from "../Utils/constants";
+import languageTranslations from "../../Utils/languageTranslations";
+import { BACKGROUND_IMAGE_URL } from "../../Utils/constants";
 
 const Search = () => {
   const currentLang = useSelector((store) => store.config.currentLang);

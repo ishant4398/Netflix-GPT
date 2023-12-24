@@ -3,9 +3,9 @@ import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Body from "./Components/Body";
 import store from "./Utils/store";
-import Login from "./Components/Login";
+import Login from "./Components/Authentication/Login";
 import Browse from "./Components/Browse";
-import Search from "./Components/Search";
+import Search from "./Components/GPT/Search";
 
 const appRouter = createBrowserRouter([
   {
