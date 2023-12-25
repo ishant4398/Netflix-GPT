@@ -9,6 +9,7 @@ import { useSearchParams } from "react-router-dom";
 
 const MovieSearchResult = () => {
   const currentLang = useSelector((store) => store.config.currentLang);
+
   const TMDB_Movie_SearchResult = useSelector(
     (store) => store.movies.searchMovieResults
   );
