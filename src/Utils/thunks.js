@@ -91,6 +91,19 @@ export const fetchTrailer = createAsyncThunk(
   }
 );
 
+export const fetchPlayingMovie = createAsyncThunk(
+  "movies/fetchPlayingMovie",
+  async (movieId) => {
+    const data = await fetch(
+      TMDB_MOVIE_URL + movieId + "/videos",
+      API_OPTIONS_GET
+    );
+    const result = await data.json();
+
+    return result?.results;
+  }
+);
+
 export const fetchGPT_SearchResults = createAsyncThunk(
   "gpt/fetchGPT_SearchResults",
   async (GPT_Query) => {

@@ -7,6 +7,8 @@ import Login from "./Components/Authentication/Login";
 import Browse from "./Components/Browse";
 import MovieSearch from "./Components/GPT/MovieSearch";
 import Error from "./Components/Error";
+import WatchMovie from "./Components/Movies/WatchMovie";
+import MovieInfo from "./Components/Movies/MovieInfo";
 
 const appRouter = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/search",
         element: <MovieSearch />,
+      },
+      {
+        path: "/watch/:id",
+        element: <WatchMovie />,
+      },
+      {
+        path: "/movieInfo/:id",
+        element: <MovieInfo />,
       },
     ],
   },

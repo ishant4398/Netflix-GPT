@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   fetchMovieSearchResults,
   fetchNowPlayingMovies,
+  fetchPlayingMovie,
   fetchPopularMovies,
   fetchTopRatedMovies,
   fetchTrailer,
@@ -16,6 +17,7 @@ const movieSlice = createSlice({
     topRated: [],
     upcoming: [],
     trailer: null,
+    playingMovie: null,
     searchMovieResults: [],
     isMovieResultsLoading: false,
   },
@@ -47,6 +49,17 @@ const movieSlice = createSlice({
             trailer = videos[0];
           }
           state.trailer = trailer;
+        }
+      })
+      .addCase(fetchPlayingMovie.fulfilled, (state, action) => {
+        const videos = action.payload;
+
+        if (videos && videos.length) {
+          let movie = videos?.find((video) => video.type === "Trailer");
+          if (!movie && videos.length) {
+            movie = videos[0];
+          }
+          state.playingMovie = movie;
         }
       })
       .addCase(fetchMovieSearchResults.pending, (state) => {

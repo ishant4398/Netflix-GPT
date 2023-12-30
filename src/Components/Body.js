@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../Utils/Slices/userSlice";
@@ -11,6 +11,11 @@ import { updateCurrentLang } from "../Utils/Slices/configSlice";
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const isWatchComponent = currentPath.includes("/watch/");
 
   const addUserToRedux = (user) => {
     const { uid, email, displayName, photoURL } = user;
@@ -55,9 +60,9 @@ const Body = () => {
 
   return (
     <div className="flex flex-col">
-      <Header />
+      {!isWatchComponent && <Header />}
       <Outlet />
-      {/* <Footer /> */}
+      {!isWatchComponent && <Footer />}
     </div>
   );
 };

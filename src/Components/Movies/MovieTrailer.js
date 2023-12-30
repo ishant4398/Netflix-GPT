@@ -14,7 +14,7 @@ const MovieTrailer = () => {
 
   return (
     <div>
-      <MovieDescription title={original_title} overview={overview} />
+      <MovieDescription id={id} title={original_title} overview={overview} />
       <PlayingTrailer movieId={id} />
     </div>
   );
