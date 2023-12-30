@@ -6,9 +6,10 @@ import {
   fetchMovieSearchResults,
 } from "../../Utils/thunks";
 import { useNavigate } from "react-router";
+import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 
 const SearchForm = () => {
-  const currentLang = useSelector((store) => store.config.currentLang);
+  const currentLang = useGetCurrentLanguage();
   const GPT_Search_Results = useSelector((store) => store.gpt.searchResults);
   const searchInputRef = useRef();
   const dispatch = useDispatch();

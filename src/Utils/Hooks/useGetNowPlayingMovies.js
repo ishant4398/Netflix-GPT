@@ -7,7 +7,7 @@ const useGetNowPlayingMovies = () => {
   const movies = useSelector((store) => store.movies?.nowPlaying);
 
   useEffect(() => {
-    dispatch(fetchNowPlayingMovies());
+    if (!movies.length) dispatch(fetchNowPlayingMovies());
   }, []);
 
   const result = movies?.length ? movies : null;

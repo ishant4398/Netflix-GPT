@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { validateSignIn } from "../../Utils/Validations/validations";
 import { signIn, signUp } from "../../Utils/Authentication/authentication";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addUser } from "../../Utils/Slices/userSlice";
 import languageTranslations from "../../Utils/languageTranslations";
+import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 
 const SignIn_Form = () => {
   const errObj = {
@@ -16,7 +17,7 @@ const SignIn_Form = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [error, setError] = useState(errObj);
   const [passwordType, setPasswordType] = useState("password");
-  const currentLang = useSelector((store) => store.config.currentLang);
+  const currentLang = useGetCurrentLanguage();
 
   const dispatch = useDispatch();
 

@@ -1,9 +1,9 @@
 import React from "react";
 import languageTranslations from "../Utils/languageTranslations";
-import { useSelector } from "react-redux";
+import useGetCurrentLanguage from "../Utils/Hooks/useGetCurrentLanguage";
 
 const Footer = () => {
-  const currentLang = useSelector((store) => store.config.currentLang);
+  const currentLang = useGetCurrentLanguage();
 
   return (
     <div className="bottom-0">

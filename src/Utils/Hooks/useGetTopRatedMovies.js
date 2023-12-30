@@ -7,7 +7,7 @@ const useGetTopRatedMovies = () => {
   const movies = useSelector((store) => store.movies?.topRated);
 
   useEffect(() => {
-    dispatch(fetchTopRatedMovies());
+    if (!movies.length) dispatch(fetchTopRatedMovies());
   }, []);
 
   const result = movies?.length ? movies : null;

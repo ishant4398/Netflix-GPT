@@ -1,10 +1,11 @@
 import React from "react";
 import languageTranslations from "../../Utils/languageTranslations";
-import { useSelector } from "react-redux";
+import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 
 const MovieCard_Shimmer = () => {
   const shimmerArr = [1, 2, 3, 4, 5, 6, 7, 8];
-  const currentLang = useSelector((store) => store.config.currentLang);
+  const currentLang = useGetCurrentLanguage();
+
   return (
     <div className="flex text-white p-11 flex-col bg-black">
       <h1 className="text-xl font-semibold">

@@ -1,9 +1,9 @@
 import React from "react";
 import languageTranslations from "../../Utils/languageTranslations";
-import { useSelector } from "react-redux";
+import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 
 const NoResultFound = () => {
-  const currentLang = useSelector((store) => store.config.currentLang);
+  const currentLang = useGetCurrentLanguage();
 
   return (
     <div className="flex text-white p-11 flex-col bg-black justify-center mt-[8%]">

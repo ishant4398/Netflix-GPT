@@ -7,7 +7,7 @@ const useGetUpcomingMovies = () => {
   const movies = useSelector((store) => store.movies?.upcoming);
 
   useEffect(() => {
-    dispatch(fetchUpcomingMovies());
+    if (!movies.length) dispatch(fetchUpcomingMovies());
   }, []);
 
   const result = movies?.length ? movies : null;

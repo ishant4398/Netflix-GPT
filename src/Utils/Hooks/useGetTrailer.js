@@ -7,7 +7,7 @@ const useGetTrailer = (movieId) => {
   const trailer = useSelector((store) => store.movies?.trailer);
 
   useEffect(() => {
-    dispatch(fetchTrailer(movieId));
+    if (!trailer) dispatch(fetchTrailer(movieId));
   }, []);
 
   return trailer;

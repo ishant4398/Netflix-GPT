@@ -7,7 +7,7 @@ const useGetPopularMovies = () => {
   const movies = useSelector((store) => store.movies?.popular);
 
   useEffect(() => {
-    dispatch(fetchPopularMovies());
+    if (!movies.length) dispatch(fetchPopularMovies());
   }, []);
 
   const result = movies?.length ? movies : null;

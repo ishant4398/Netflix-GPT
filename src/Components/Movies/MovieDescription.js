@@ -1,9 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import languageTranslations from "../../Utils/languageTranslations";
+import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 
 const MovieDescription = ({ title, overview }) => {
-  const currentLang = useSelector((store) => store.config.currentLang);
+  const currentLang = useGetCurrentLanguage();
 
   return (
     <div className="w-screen aspect-video absolute z-10 text-white bg-gradient-to-r from-black">

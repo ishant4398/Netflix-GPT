@@ -7,11 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { toggleGPTSearch } from "../Utils/Slices/gptSlice";
 import { updateCurrentLang } from "../Utils/Slices/configSlice";
 import languageTranslations from "../Utils/languageTranslations";
+import useGetCurrentLanguage from "../Utils/Hooks/useGetCurrentLanguage";
 
 const Header = () => {
   const currentUser = useSelector((store) => store.user);
   const showGPTSearch = useSelector((store) => store.gpt.showGPTSearch);
-  const currentLang = useSelector((store) => store.config.currentLang);
+  const currentLang = useGetCurrentLanguage();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
