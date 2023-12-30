@@ -79,7 +79,7 @@ const SignIn_Form = () => {
   };
 
   return (
-    <div className="absolute w-2/5 bg-black  bg-opacity-80 mx-auto right-0 left-0 p-16 my-24 text-white rounded-md">
+    <div className="absolute w-5/6 my-40 md:w-2/5 bg-black  bg-opacity-80 mx-auto right-0 left-0 p-16 md:my-24 text-white rounded-md">
       <form onSubmit={(e) => e.preventDefault()}>
         <h1 className="font-semibold text-2xl pb-3">
           {isSignIn

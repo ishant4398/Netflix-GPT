@@ -6,7 +6,11 @@ const Login = () => {
   return (
     <div>
       <div className="absolute">
-        <img src={BACKGROUND_IMAGE_URL} alt="netflix-cover-image" />
+        <img
+          className="h-screen object-cover md:h-auto"
+          src={BACKGROUND_IMAGE_URL}
+          alt="netflix-cover-image"
+        />
       </div>
       <SignIn_Form />
     </div>

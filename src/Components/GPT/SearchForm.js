@@ -51,17 +51,17 @@ const SearchForm = () => {
       className="flex justify-center bg-black"
       onSubmit={(e) => e.preventDefault()}
     >
-      <div className="grid grid-cols-12 w-[55%] mt-28 h-11">
+      <div className="grid grid-cols-12 w-[75%] md:w-[55%] mt-28 h-11">
         <input
           ref={searchInputRef}
-          className="col-span-10 p-2 px-4 rounded-md"
+          className="col-span-8 md:col-span-10 p-2 px-4 rounded-md"
           type="text"
           placeholder={
             languageTranslations[currentLang]?.gptSearchPlaceholderValue
           }
         ></input>
         <button
-          className="col-span-2 p-2 mx-4 bg-red-700 text-white font-semibold rounded-md"
+          className="col-span-4 md:col-span-2 p-2 mx-4 bg-red-700 text-white font-semibold rounded-md"
           onClick={handleSearchClick}
         >
           {languageTranslations[currentLang]?.gptSearchButton}
