@@ -33,6 +33,7 @@ const Header = () => {
 
   const handleChangeLanguage = (e) => {
     dispatch(updateCurrentLang(e.target.value));
+    localStorage.setItem("currLanguage", e.target.value);
   };
 
   return (

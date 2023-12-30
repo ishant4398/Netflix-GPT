@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../Utils/Slices/userSlice";
 import { auth } from "../firebase";
+import { updateCurrentLang } from "../Utils/Slices/configSlice";
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,14 @@ const Body = () => {
   const removeUserFromRedux = () => {
     dispatch(removeUser());
   };
+
+  useLayoutEffect(() => {
+    let currentLang = localStorage.getItem("currLanguage");
+
+    if (currentLang) {
+      dispatch(updateCurrentLang(currentLang));
+    }
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
