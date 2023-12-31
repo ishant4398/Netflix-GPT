@@ -1,11 +1,14 @@
 import React from "react";
 import languageTranslations from "../../Utils/languageTranslations";
 import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MovieDescription = ({ id, title, overview }) => {
   const currentLang = useGetCurrentLanguage();
+  const { pathname: currentPath } = useLocation();
   const navigate = useNavigate();
+
+  const isMovieInfo = currentPath.includes("/movieInfo/");
 
   const navToWatchMovie = () => {
     navigate("/watch/" + id);
@@ -27,12 +30,14 @@ const MovieDescription = ({ id, title, overview }) => {
           >
             {languageTranslations[currentLang].playButtonText}
           </button>
-          <button
-            className="w-32 h-10 mx-3 bg-gray-500 bg-opacity-50 text-white rounded-md hover:bg-opacity-80"
-            onClick={navToMovieInfo}
-          >
-            {languageTranslations[currentLang].moreInfoButtonText}
-          </button>
+          {!isMovieInfo && (
+            <button
+              className="w-32 h-10 mx-3 bg-gray-500 bg-opacity-50 text-white rounded-md hover:bg-opacity-80"
+              onClick={navToMovieInfo}
+            >
+              {languageTranslations[currentLang].moreInfoButtonText}
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -62,7 +62,7 @@ const Body = () => {
     <div className="flex flex-col">
       {!isWatchComponent && <Header />}
       <Outlet />
-      {!isWatchComponent && <Footer />}
+      {/* {!isWatchComponent && <Footer />} */}
     </div>
   );
 };

@@ -144,3 +144,12 @@ const fetchMovie = async (movie) => {
   const result = await data.json();
   return result;
 };
+
+export const fetchMovieDetails = createAsyncThunk(
+  "movies/fetchMovieDetails",
+  async (movieId) => {
+    const data = await fetch(TMDB_MOVIE_URL + movieId, API_OPTIONS_GET);
+    const result = await data.json();
+    return result;
+  }
+);
