@@ -7,12 +7,12 @@ const ReleasedDate = ({ release_date }) => {
   const releasedDate = convertDateFormat(release_date);
 
   return (
-    <div className="my-8">
+    <>
       <p className="text-white text-md font-bold">Released Date</p>
       <div className="text-[#aaa] font-[500] mt-2">
         <span>{releasedDate}</span>
       </div>
-    </div>
+    </>
   );
 };
 

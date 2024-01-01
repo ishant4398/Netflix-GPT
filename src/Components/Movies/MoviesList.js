@@ -2,7 +2,7 @@ import React from "react";
 import MovieCard from "./MovieCard";
 
 const MoviesList = ({ title, movies }) => {
-  if (!movies) return;
+  if (!movies || !movies.length) return;
 
   return (
     <div>

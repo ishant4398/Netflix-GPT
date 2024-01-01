@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 const Genre = ({ genres }) => {
-  if (!genres.length) return;
+  if (!genres?.length) return;
 
   return (
     <div>

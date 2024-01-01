@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../Utils/Slices/userSlice";
 import { auth } from "../firebase";
 import { updateCurrentLang } from "../Utils/Slices/configSlice";
+import ScrollToTop from "./ScrollToTop";
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ const Body = () => {
 
   return (
     <div className="flex flex-col">
+      <ScrollToTop />
       {!isWatchComponent && <Header />}
       <Outlet />
       {/* {!isWatchComponent && <Footer />} */}

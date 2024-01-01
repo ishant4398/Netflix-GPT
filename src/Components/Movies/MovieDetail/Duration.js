@@ -7,12 +7,12 @@ const Duration = ({ duration }) => {
   const durationOfMovie = formatRuntime(duration);
 
   return (
-    <div className="my-8">
+    <>
       <p className="text-white text-md font-bold">Duration</p>
       <div className="text-[#aaa] font-[500] mt-2">
         <span>{durationOfMovie}</span>
       </div>
-    </div>
+    </>
   );
 };
 

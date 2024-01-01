@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 
 const ProductionCountries = ({ production_countries }) => {
-  if (!production_countries.length) return;
+  if (!production_countries?.length) return;
 
   return (
-    <div className="my-8">
+    <>
       <p className="text-white text-md font-bold">Production Countries</p>
       <div className="text-[#aaa] font-[500] mt-2">
         {production_countries.map((country) => (
@@ -14,7 +14,7 @@ const ProductionCountries = ({ production_countries }) => {
           </Fragment>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

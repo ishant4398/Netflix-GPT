@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 
 const AudioLanguages = ({ languages }) => {
-  if (!languages.length) return;
+  if (!languages?.length) return;
 
   return (
-    <div className="my-8">
+    <>
       <p className="text-white text-md font-bold">Audio languages</p>
       <div className="text-[#aaa] font-[500] mt-2">
         {languages.map((language) => (
@@ -14,7 +14,7 @@ const AudioLanguages = ({ languages }) => {
           </Fragment>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

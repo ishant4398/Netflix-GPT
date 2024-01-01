@@ -44,11 +44,6 @@ const MovieSearchResult = () => {
             movie.poster_path && (
               <div key={movie.id} className="flex mt-3 mb-6 mr-3 flex-col">
                 <MovieCard movie={movie} />
-                {MOVIE_LANGUAGES[movie?.original_language] && (
-                  <p className="-mt-4">
-                    ({MOVIE_LANGUAGES[movie?.original_language]})
-                  </p>
-                )}
               </div>
             )
         )}
