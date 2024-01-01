@@ -1,8 +1,8 @@
 const languageTranslations = {
   en: {
     websiteOwner: "Ishant Kushwaha",
-    // gptSearchPlaceholderValue: "Search your movies using AI",
-    gptSearchPlaceholderValue: "Search movies",
+    gptSearchPlaceholderValue: "Search your movies using AI",
+    // gptSearchPlaceholderValue: "Search movies",
     gptSearchButton: "Search",
     nowPlayingMovieHeading: "Now playing",
     popularMoviesHeading: "Popular",
@@ -36,8 +36,8 @@ const languageTranslations = {
   },
   hindi: {
     websiteOwner: "इशांत कुशवाह",
-    // gptSearchPlaceholderValue: "AI का उपयोग करके अपनी फिल्में खोजें",
-    gptSearchPlaceholderValue: "फिल्में खोजें",
+    gptSearchPlaceholderValue: "AI का उपयोग करके अपनी फिल्में खोजें",
+    // gptSearchPlaceholderValue: "फिल्में खोजें",
     gptSearchButton: "खोज",
     nowPlayingMovieHeading: "अभी चलने वाली फिल्म्स",
     popularMoviesHeading: "लोकप्रिय",
@@ -71,8 +71,8 @@ const languageTranslations = {
   },
   spanish: {
     websiteOwner: "Ishant Kushwaha",
-    // gptSearchPlaceholderValue: "Busca tus películas usando IA",
-    gptSearchPlaceholderValue: "buscar películas",
+    gptSearchPlaceholderValue: "Busca tus películas usando IA",
+    // gptSearchPlaceholderValue: "buscar películas",
     gptSearchButton: "Buscar",
     nowPlayingMovieHeading: "Jugando ahora",
     popularMoviesHeading: "Popular",

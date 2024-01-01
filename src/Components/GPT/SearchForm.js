@@ -15,23 +15,22 @@ const SearchForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // TMDB_SearchQuery = ['Andaz Apna Apna', 'Chupke Chupke', 'Golmaal', 'Padosan', 'Chashme Buddoor']
   const getTMDBSearchResult = async (TMDB_SearchQuery) => {
-    // TMDB_SearchQuery = ['Andaz Apna Apna', 'Chupke Chupke', 'Golmaal', 'Padosan', 'Chashme Buddoor']
-
     await dispatch(fetchMovieSearchResults(TMDB_SearchQuery));
   };
 
   const getGPTSearchResults = async () => {
     const searchQuery = searchInputRef.current.value.trim();
     const GPT_Query = `Act as a movie recommended system and suggest me movies for the following query: "${searchQuery}". Only give 5 movies as a result and in comma separated format according to the given example ahead. Example: Don,Sholay,Andaz apna apna,Main hoon na,Golmaal`;
-    await dispatch(fetchGPT_SearchResults(GPT_Query)); // API Not working due to failed purchase plan.
+    await dispatch(fetchGPT_SearchResults(GPT_Query));
   };
 
   const handleSearchClick = async () => {
     const searchValue = searchInputRef.current.value.trim();
     if (searchValue) {
       navigate("?searchQuery=" + searchValue);
-      await getGPTSearchResults(); // API Not working due to failed purchase plan.
+      await getGPTSearchResults();
 
       // If result from GPT API exists then fetch data according to it otherwise fetch data only according to user input not on the basis of GPT result.
       let TMDB_SearchQuery;
