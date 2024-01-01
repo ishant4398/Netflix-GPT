@@ -7,9 +7,12 @@ import ProductionCountries from "./MovieDetail/ProductionCountries";
 import ProductionCompanies from "./MovieDetail/ProductionCompanies";
 import Adult from "./MovieDetail/Adult";
 import Duration from "./MovieDetail/Duration";
+import languageTranslations from "../../Utils/languageTranslations";
+import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 
 const MovieDetail = () => {
   const movieDetails = useSelector((store) => store.movies?.movieDetails);
+  const currentLang = useGetCurrentLanguage();
 
   if (!movieDetails) return;
 
@@ -32,7 +35,9 @@ const MovieDetail = () => {
       <div className="w-screen aspect-video absolute z-10 px-12 mt-[500px]">
         <Genre genres={genres} />
         <div className="mt-[65px] mb-6 [&>div]:my-8">
-          <p className="text-white text-xl font-bold">More Info</p>
+          <p className="text-white text-xl font-bold">
+            {languageTranslations[currentLang].moreInfoHeading}
+          </p>
           <div>
             <AudioLanguages languages={spoken_languages} />
           </div>
@@ -49,7 +54,7 @@ const MovieDetail = () => {
             <ProductionCountries production_countries={production_countries} />
           </div>
           <div>
-            <ProductionCountries production_countries={production_countries} />
+            <ProductionCompanies production_companies={production_companies} />
           </div>
         </div>
       </div>

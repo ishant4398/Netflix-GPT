@@ -1,7 +1,10 @@
 import React from "react";
 import { useRouteError, useNavigate } from "react-router-dom";
+import useGetCurrentLanguage from "../Utils/Hooks/useGetCurrentLanguage";
+import languageTranslations from "../Utils/languageTranslations";
 
 const Error = () => {
+  const currentLang = useGetCurrentLanguage();
   const error = useRouteError();
   const navigate = useNavigate();
 
@@ -18,7 +21,7 @@ const Error = () => {
         className="px-3 py-1 my-4 mb-5 w-32 h-10 bg-white text-black rounded-md hover:bg-opacity-80 font-semibold"
         onClick={handleBack}
       >
-        Back
+        {languageTranslations[currentLang].back}
       </button>
     </div>
   );
