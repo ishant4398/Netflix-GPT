@@ -1,7 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { API_OPTIONS_GET, TMDB_MOVIE_URL } from "./constants";
+import {
+  API_OPTIONS_GET,
+  OPEN_AI_GPT_MODEL,
+  TMDB_MOVIE_URL,
+} from "./constants";
 import openai from "./openAI";
 
 // We are not using signIn_Thunk
@@ -109,20 +113,10 @@ export const fetchGPT_SearchResults = createAsyncThunk(
   async (GPT_Query) => {
     const GPT_Results = await openai.chat.completions.create({
       messages: [{ role: "user", content: GPT_Query }],
-      model: "gpt-3.5-turbo",
+      model: OPEN_AI_GPT_MODEL,
     });
 
-    // console.log(GPT_Results?.choices[0]?.message);
     return GPT_Results?.choices[0]?.message?.content;
-
-    // For Testing:-
-    // const GPT_Results = new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     resolve("Andaz Apna Apna,Chupke Chupke,Golmaal");
-    //   }, 1000);
-    // });
-
-    // return await GPT_Results;
   }
 );
 

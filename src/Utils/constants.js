@@ -44,3 +44,4 @@ export const API_OPTIONS_GET = {
 };
 
 export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY;
+export const OPEN_AI_GPT_MODEL = "gpt-3.5-turbo";

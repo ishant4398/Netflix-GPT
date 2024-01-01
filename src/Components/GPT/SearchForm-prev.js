@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import languageTranslations from "../../Utils/languageTranslations";
 import {
@@ -14,21 +14,6 @@ const SearchForm = () => {
   const searchInputRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const searchValue = searchInputRef.current.value.trim();
-    if (searchValue) {
-      let TMDB_SearchQuery;
-
-      if (GPT_Search_Results.length) {
-        TMDB_SearchQuery = GPT_Search_Results;
-      } else {
-        TMDB_SearchQuery = searchValue.split();
-      }
-
-      getTMDBSearchResult(TMDB_SearchQuery);
-    }
-  }, [GPT_Search_Results]);
 
   // TMDB_SearchQuery = ['Andaz Apna Apna', 'Chupke Chupke', 'Golmaal', 'Padosan', 'Chashme Buddoor']
   const getTMDBSearchResult = async (TMDB_SearchQuery) => {
@@ -46,6 +31,17 @@ const SearchForm = () => {
     if (searchValue) {
       navigate("?searchQuery=" + searchValue);
       await getGPTSearchResults();
+
+      // If result from GPT API exists then fetch data according to it otherwise fetch data only according to user input not on the basis of GPT result.
+      let TMDB_SearchQuery;
+
+      if (GPT_Search_Results.length) {
+        TMDB_SearchQuery = GPT_Search_Results;
+      } else {
+        TMDB_SearchQuery = searchValue.split();
+      }
+
+      await getTMDBSearchResult(TMDB_SearchQuery);
     }
   };
 
