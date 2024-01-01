@@ -10,6 +10,9 @@ import Error from "./Components/Error";
 import WatchMovie from "./Components/Movies/WatchMovie";
 import MovieInfo from "./Components/Movies/MovieInfo";
 
+import ErrorBoundaryCustom from "./Components/ErrorBoundary/ErrorBoundaryCustom";
+import ErrorBoundaryLibrary from "./Components/ErrorBoundary/ErrorBoundaryLibrary";
+
 const appRouter = createBrowserRouter([
   {
     path: "/",

@@ -47,6 +47,6 @@ export const signOutUser = async () => {
     await signOut(auth);
   } catch (error) {
     const result = `${error.code}: ${error.message}`;
-    console.log(result);
+    console.error(result);
   }
 };
