@@ -7,14 +7,10 @@ const ProductionCompanies = ({ production_companies }) => {
     <div className="my-8">
       <p className="text-white text-md font-bold">Production Companies</p>
       <div className="text-[#aaa] font-[500] mt-2">
-        {production_companies.map((company, index, arr) => (
+        {production_companies.map((company) => (
           <Fragment key={company.id}>
             <span>{company.name}</span>
-            <span
-              className={" pr-1 " + (arr.length - 1 === index ? "hidden" : "")}
-            >
-              ,
-            </span>
+            <span className="pr-1 last:hidden">,</span>
           </Fragment>
         ))}
       </div>

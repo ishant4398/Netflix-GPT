@@ -4,5 +4,33 @@
 
 ::-webkit-scrollbar {
   width: 0px;
-  color: blue !important;
 }
+
+/* @layer utilities {
+  .hoverable-popover-trigger {
+    @apply relative;
+
+    .popover {
+      @apply absolute;
+      @apply left-auto top-auto bottom-auto right-auto;
+      @apply whitespace-nowrap;
+
+      &.left {
+        @apply top-1/2 transform -translate-y-1/2 right-full;
+      }
+
+      &.right {
+        @apply top-1/2 transform -translate-y-1/2 left-full;
+      }
+
+      &.top {
+        @apply left-1/2 transform -translate-x-1/2 bottom-full;
+      }
+
+      &.bottom {
+        @apply left-1/2 transform -translate-x-1/2 top-full;
+      }
+    }
+  }
+}
+ */

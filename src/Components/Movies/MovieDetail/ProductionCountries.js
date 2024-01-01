@@ -7,14 +7,10 @@ const ProductionCountries = ({ production_countries }) => {
     <div className="my-8">
       <p className="text-white text-md font-bold">Production Countries</p>
       <div className="text-[#aaa] font-[500] mt-2">
-        {production_countries.map((country, index, arr) => (
+        {production_countries.map((country) => (
           <Fragment key={country.name}>
             <span>{country.name}</span>
-            <span
-              className={" pr-1 " + (arr.length - 1 === index ? "hidden" : "")}
-            >
-              ,
-            </span>
+            <span className="pr-1 last:hidden">,</span>
           </Fragment>
         ))}
       </div>

@@ -7,9 +7,9 @@ const MovieCard = ({ movie }) => {
   if (!poster_path) return;
 
   return (
-    <div className="w-64 mr-7 mb-4">
+    <div className="w-64 mr-7 mb-4 cursor-pointer">
       <img
-        className="w-64 h-44 rounded-lg cursor-pointer"
+        className="w-64 h-44 rounded-lg"
         src={IMG_CDN_URL + poster_path}
         alt={title}
       ></img>

@@ -5,16 +5,10 @@ const Genre = ({ genres }) => {
 
   return (
     <div>
-      {genres.map((genre, index, arr) => (
+      {genres.map((genre) => (
         <Fragment key={genre.id}>
           <span className="text-white underline">{genre.name}</span>
-          <span
-            className={
-              "px-4 text-[10px] " + (arr.length - 1 === index ? "hidden" : "")
-            }
-          >
-            ⚪
-          </span>
+          <span className="px-4 text-[10px] last:hidden">⚪</span>
         </Fragment>
       ))}
     </div>
