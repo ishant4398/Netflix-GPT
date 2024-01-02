@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { IMG_CDN_URL } from "../../Utils/constants";
-import PopoverMovieCard from "./PopoverMovieCard";
 import { useNavigate } from "react-router-dom";
+import PopoverMovieCard from "./PopoverMovieCard";
 import usePopoverEvents from "../../Utils/Hooks/usePopoverEvents";
 
 const MovieCard = ({ movie }) => {
