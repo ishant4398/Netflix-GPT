@@ -1,16 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { IMG_CDN_URL } from "../../Utils/constants";
 import PopoverMovieCard from "./PopoverMovieCard";
 import { useNavigate } from "react-router-dom";
 import usePopoverEvents from "../../Utils/Hooks/usePopoverEvents";
 
 const MovieCard = ({ movie }) => {
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const movieCardRef = useRef(null);
   const navigate = useNavigate();
 
-  // Applying Popover and Debouncing on mouse over and mouse out events
-  usePopoverEvents(movieCardRef, setIsPopoverOpen);
+  // Applying Popover, Event Delegation and Debouncing on mouse over and mouse out events
+  const isPopoverOpen = usePopoverEvents(movieCardRef);
 
   const handleNavToMovieInfo = () => {
     navigate("/movieInfo/" + id);

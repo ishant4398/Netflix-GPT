@@ -1,6 +1,8 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 
-const usePopoverEvents = (movieCardRef, setIsPopoverOpen) => {
+const usePopoverEvents = (movieCardRef) => {
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
   const handleMouseOver = (e) => {
     if (movieCardRef.current && movieCardRef.current.contains(e.target)) {
       setIsPopoverOpen(true);
@@ -13,7 +15,7 @@ const usePopoverEvents = (movieCardRef, setIsPopoverOpen) => {
     }
   };
 
-  // Applying Debouncing on mouse over and mouse out events
+  // Applying Popover, Event Delegation and Debouncing on mouse over and mouse out events
   useLayoutEffect(() => {
     let timerId_MouseOver;
     let timerId_MouseOut;
@@ -41,6 +43,8 @@ const usePopoverEvents = (movieCardRef, setIsPopoverOpen) => {
       document.removeEventListener("mouseout", handleMouseOutTimeout);
     };
   }, [movieCardRef]);
+
+  return isPopoverOpen;
 };
 
 export default usePopoverEvents;
