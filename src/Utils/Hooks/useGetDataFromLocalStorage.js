@@ -17,32 +17,24 @@ const useGetDataFromLocalStorage = () => {
     if (userId) {
       const currentLang = localStorage.getItem(`currLanguage_${userId}`);
 
-      if (currentLang) {
-        dispatch(updateCurrentLang(currentLang));
-      }
-    }
-  }, [user]);
-
-  useLayoutEffect(() => {
-    if (userId) {
       const likedMovies = JSON.parse(
         localStorage.getItem(`likedMovies_${userId}`)
       );
 
-      if (likedMovies && likedMovies.length) {
-        dispatch(updateLikedMovies(likedMovies));
-      }
-    }
-  }, [user]);
-
-  useLayoutEffect(() => {
-    if (userId) {
       const watchLaterMovies = JSON.parse(
         localStorage.getItem(`watchLaterMovies_${userId}`)
       );
 
-      if (watchLaterMovies && watchLaterMovies.length) {
+      if (currentLang) {
+        dispatch(updateCurrentLang(currentLang));
+      }
+
+      if (watchLaterMovies?.length) {
         dispatch(updateWatchLaterMovies(watchLaterMovies));
+      }
+
+      if (likedMovies?.length) {
+        dispatch(updateLikedMovies(likedMovies));
       }
     }
   }, [user]);

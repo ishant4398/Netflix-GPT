@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import languageTranslations from "../../Utils/languageTranslations";
 import {
@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 
 const SearchForm = () => {
+  const [showExample, setShowExample] = useState(false);
   const currentLang = useGetCurrentLanguage();
   const GPT_Search_Results = useSelector((store) => store.gpt.searchResults);
   const searchInputRef = useRef();
@@ -16,11 +17,19 @@ const SearchForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const searchValue = searchInputRef.current.value.trim();
-    if (searchValue) {
-      let TMDB_SearchQuery;
+    setShowExample(true);
+  }, []);
 
-      if (GPT_Search_Results.length) {
+  useEffect(() => {
+    const searchValue = searchInputRef.current.value.trim();
+
+    if (searchValue) {
+      let TMDB_SearchQuery = "";
+
+      // Check if GPT_Search_Results contains unwanted terms
+      const hasUnwantedTerms = checkForUnwantedTerms(GPT_Search_Results);
+
+      if (!hasUnwantedTerms) {
         TMDB_SearchQuery = GPT_Search_Results;
       } else {
         TMDB_SearchQuery = searchValue.split();
@@ -29,6 +38,16 @@ const SearchForm = () => {
       getTMDBSearchResult(TMDB_SearchQuery);
     }
   }, [GPT_Search_Results]);
+
+  const checkForUnwantedTerms = (GPT_Search_Results) => {
+    const unwantedTerms = ["sorry", "apologies", "apologize", "unfortunately"];
+    const words = GPT_Search_Results?.join("").toLowerCase().split(" ");
+
+    const hasUnwantedTerms = unwantedTerms.some((word) =>
+      words.includes(word.toLowerCase())
+    );
+    return hasUnwantedTerms;
+  };
 
   // TMDB_SearchQuery = ['Andaz Apna Apna', 'Chupke Chupke', 'Golmaal', 'Padosan', 'Chashme Buddoor']
   const getTMDBSearchResult = async (TMDB_SearchQuery) => {
@@ -44,33 +63,41 @@ const SearchForm = () => {
   const handleSearchClick = async () => {
     const searchValue = searchInputRef.current.value.trim();
     if (searchValue) {
+      setShowExample(false);
       navigate("?searchQuery=" + searchValue);
       await getGPTSearchResults();
     }
   };
 
   return (
-    <form
-      className="flex justify-center bg-black"
-      onSubmit={(e) => e.preventDefault()}
-    >
-      <div className="grid grid-cols-12 w-[75%] md:w-[55%] mt-28 h-11">
-        <input
-          ref={searchInputRef}
-          className="col-span-8 md:col-span-10 p-2 px-4 rounded-md"
-          type="text"
-          placeholder={
-            languageTranslations[currentLang]?.gptSearchPlaceholderValue
-          }
-        ></input>
-        <button
-          className="col-span-4 md:col-span-2 p-2 mx-4 bg-red-700 text-white font-semibold rounded-md"
-          onClick={handleSearchClick}
-        >
-          {languageTranslations[currentLang]?.gptSearchButton}
-        </button>
-      </div>
-    </form>
+    <>
+      <form
+        className="flex justify-center bg-black"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <div className="grid grid-cols-12 w-[75%] md:w-[55%] mt-28 h-11">
+          <input
+            ref={searchInputRef}
+            className="col-span-8 md:col-span-10 p-2 px-4 rounded-md"
+            type="text"
+            placeholder={
+              languageTranslations[currentLang]?.gptSearchPlaceholderValue
+            }
+          ></input>
+          <button
+            className="col-span-4 md:col-span-2 p-2 mx-4 bg-red-700 text-white font-semibold rounded-md"
+            onClick={handleSearchClick}
+          >
+            {languageTranslations[currentLang]?.gptSearchButton}
+          </button>
+        </div>
+      </form>
+      {showExample && (
+        <p className="text-gray-500 mt-1 font-semibold italic ml-[13%] md:ml-[22.5%]">
+          Example: Suggest me some old horror comedy movies in hindi
+        </p>
+      )}
+    </>
   );
 };
 
