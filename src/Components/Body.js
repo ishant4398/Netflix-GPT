@@ -1,63 +1,17 @@
-import { useEffect, useLayoutEffect } from "react";
+import Header from "./Header/Header";
 import Footer from "./Footer";
-import Header from "./Header";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
-import { useDispatch } from "react-redux";
-import { addUser, removeUser } from "../Utils/Slices/userSlice";
-import { auth } from "../firebase";
-import { updateCurrentLang } from "../Utils/Slices/configSlice";
+import { Outlet, useLocation } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
+import useAuthenticationStateChange from "../Utils/Hooks/useAuthenticationStateChange";
+import useGetDataFromLocalStorage from "../Utils/Hooks/useGetDataFromLocalStorage";
 
 const Body = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  useGetDataFromLocalStorage();
+  useAuthenticationStateChange();
 
   const location = useLocation();
   const currentPath = location.pathname;
-
   const isWatchComponent = currentPath.includes("/watch/");
-
-  const addUserToRedux = (user) => {
-    const { uid, email, displayName, photoURL } = user;
-
-    const userObj = {
-      uid: uid,
-      email: email,
-      displayName: displayName,
-      photoURL: photoURL,
-    };
-
-    dispatch(addUser(userObj));
-  };
-
-  const removeUserFromRedux = () => {
-    dispatch(removeUser());
-  };
-
-  useLayoutEffect(() => {
-    let currentLang = localStorage.getItem("currLanguage");
-
-    if (currentLang) {
-      dispatch(updateCurrentLang(currentLang));
-    }
-  }, []);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // After Sign In / Sign Up
-        addUserToRedux(user);
-        navigate("/browse");
-      } else {
-        // After Sign Out
-        removeUserFromRedux();
-        navigate("/");
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   return (
     <div className="flex flex-col">

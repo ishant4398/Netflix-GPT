@@ -1,16 +1,16 @@
 import { useLayoutEffect, useState } from "react";
 
-const usePopoverEvents = (movieCardRef) => {
+const usePopoverEvents = (elementRef) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const handleMouseOver = (e) => {
-    if (movieCardRef.current && movieCardRef.current.contains(e.target)) {
+    if (elementRef.current && elementRef.current.contains(e.target)) {
       setIsPopoverOpen(true);
     }
   };
 
   const handleMouseOut = (e) => {
-    if (movieCardRef.current && !movieCardRef.current.contains(e.target)) {
+    if (elementRef.current && !elementRef.current.contains(e.target)) {
       setIsPopoverOpen(false);
     }
   };
@@ -42,7 +42,7 @@ const usePopoverEvents = (movieCardRef) => {
       document.removeEventListener("mouseover", handleMouseOverTimeout);
       document.removeEventListener("mouseout", handleMouseOutTimeout);
     };
-  }, [movieCardRef]);
+  }, [elementRef]);
 
   return isPopoverOpen;
 };

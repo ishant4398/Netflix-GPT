@@ -7,6 +7,7 @@ import MovieCard_Shimmer from "../Shimmer/MovieCard_Shimmer";
 import NoResultFound from "./NoResultFound";
 import { useSearchParams } from "react-router-dom";
 import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
+import Message from "../Message";
 
 const MovieSearchResult = () => {
   const currentLang = useGetCurrentLanguage();
@@ -31,7 +32,12 @@ const MovieSearchResult = () => {
     return <MovieCard_Shimmer />;
   }
 
-  if (!TMDB_Movie_SearchResult.length && searchQuery) return <NoResultFound />;
+  if (!TMDB_Movie_SearchResult.length && searchQuery)
+    return (
+      <Message
+        message={languageTranslations[currentLang]?.noSearchResultFound}
+      />
+    );
 
   return (
     <div className="flex text-white p-11 flex-col bg-black">

@@ -18,6 +18,8 @@ const movieSlice = createSlice({
     topRated: [],
     upcoming: [],
     searchMovieResults: [],
+    likedMovies: [],
+    watchLaterMovies: [],
     trailer: null,
     playingMovie: null,
     movieDetails: null,
@@ -26,6 +28,44 @@ const movieSlice = createSlice({
   reducers: {
     clearSearchMovieResults: (state) => {
       state.searchMovieResults = [];
+    },
+    addLikedMovies: (state, action) => {
+      const newMovie = action.payload;
+      const movieList = state.likedMovies;
+
+      const isMovieExists = movieList.some((movie) => movie.id === newMovie.id);
+
+      if (!isMovieExists) {
+        state.likedMovies = [newMovie, ...movieList];
+      }
+    },
+    removeLikedMovies: (state, action) => {
+      const id = action.payload;
+      const movieList = state.likedMovies;
+
+      state.likedMovies = movieList.filter((movie) => movie.id !== id);
+    },
+    updateLikedMovies: (state, action) => {
+      state.likedMovies = action.payload;
+    },
+    addWatchedLaterMovies: (state, action) => {
+      const newMovie = action.payload;
+      const movieList = state.watchLaterMovies;
+
+      const isMovieExists = movieList.some((movie) => movie.id === newMovie.id);
+
+      if (!isMovieExists) {
+        state.watchLaterMovies = [newMovie, ...movieList];
+      }
+    },
+    removeWatchedLaterMovies: (state, action) => {
+      const id = action.payload;
+      const movieList = state.watchLaterMovies;
+
+      state.watchLaterMovies = movieList.filter((movie) => movie.id !== id);
+    },
+    updateWatchLaterMovies: (state, action) => {
+      state.watchLaterMovies = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -89,6 +129,14 @@ const movieSlice = createSlice({
   },
 });
 
-export const { clearSearchMovieResults } = movieSlice.actions;
+export const {
+  clearSearchMovieResults,
+  addLikedMovies,
+  removeLikedMovies,
+  updateLikedMovies,
+  addWatchedLaterMovies,
+  removeWatchedLaterMovies,
+  updateWatchLaterMovies,
+} = movieSlice.actions;
 
 export default movieSlice.reducer;

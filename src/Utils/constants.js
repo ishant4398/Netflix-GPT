@@ -6,6 +6,8 @@ export const BACKGROUND_IMAGE_URL =
 
 export const TMDB_MOVIE_URL = "https://api.themoviedb.org/3/movie/";
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
+export const IMG_USER_ICON_URL =
+  "https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-1.png";
 
 export const LANGUAGES = [
   {
@@ -34,6 +36,19 @@ export const MOVIE_LANGUAGES = {
   or: "Oriya",
   th: "Thai",
 };
+
+export const ACTIVITY_BUTTONS = [
+  {
+    id: 1,
+    value: "liked",
+    name: "Liked",
+  },
+  {
+    id: 2,
+    value: "watchlater",
+    name: "Watch Later",
+  },
+];
 
 export const API_OPTIONS_GET = {
   method: "GET",

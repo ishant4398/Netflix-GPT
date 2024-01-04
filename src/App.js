@@ -9,6 +9,7 @@ import MovieSearch from "./Components/GPT/MovieSearch";
 import Error from "./Components/Error";
 import WatchMovie from "./Components/Movies/WatchMovie";
 import MovieInfo from "./Components/Movies/MovieInfo";
+import WatchList from "./Components/Watchlist/WatchList";
 
 import ErrorBoundaryCustom from "./Components/ErrorBoundary/ErrorBoundaryCustom";
 import ErrorBoundaryLibrary from "./Components/ErrorBoundary/ErrorBoundaryLibrary";
@@ -38,6 +39,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/movieInfo/:id",
         element: <MovieInfo />,
+      },
+      {
+        path: "/watchlist",
+        element: <WatchList />,
       },
     ],
   },

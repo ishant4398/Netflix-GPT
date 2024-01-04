@@ -1,0 +1,35 @@
+.button-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  color: white;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+.dropdown-content {
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content button {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.dropdown-content button:hover {
+  background-color: #f1f1f1;
+}
+
+.button-dropdown-container:hover .dropdown-content {
+  display: block;
+}

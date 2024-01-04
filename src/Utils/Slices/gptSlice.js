@@ -4,15 +4,10 @@ import { fetchGPT_SearchResults } from "../thunks";
 const gptSlice = createSlice({
   name: "gpt",
   initialState: {
-    showGPTSearch: false,
     searchResults: [],
     isGPT_SearchResultsLoading: false,
   },
-  reducers: {
-    toggleGPTSearch: (state, action) => {
-      state.showGPTSearch = !state.showGPTSearch;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchGPT_SearchResults.pending, (state) => {
@@ -35,6 +30,6 @@ const gptSlice = createSlice({
   },
 });
 
-export const { toggleGPTSearch } = gptSlice.actions;
+export const {} = gptSlice.actions;
 
 export default gptSlice.reducer;
