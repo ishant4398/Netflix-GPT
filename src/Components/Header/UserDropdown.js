@@ -28,6 +28,10 @@ const UserDropdown = () => {
     navigate("/profile");
   };
 
+  const navToAdmin = () => {
+    navigate("/admin");
+  };
+
   return (
     <div ref={userDropdownContainerRef} className="flex flex-col h-11">
       <div className="flex flex-row">
@@ -52,6 +56,12 @@ const UserDropdown = () => {
           >
             {languageTranslations[currentLang]?.profileText}
           </li>
+          {/* <li
+            className="text-white font-bold cursor-pointer pt-3 text-center"
+            onClick={navToAdmin}
+          >
+            {languageTranslations[currentLang]?.adminText}
+          </li> */}
           <li
             className="text-white font-bold cursor-pointer pt-3 text-center"
             onClick={handleSignOut}

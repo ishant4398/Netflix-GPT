@@ -45,6 +45,7 @@ const languageTranslations = {
     nameHeading: "Name",
     emailHeading: "Email",
     emailVerifiedHeading: "Email Verified",
+    adminText: "Admin (Test)",
   },
   hindi: {
     websiteOwner: "इशांत कुशवाह",
@@ -92,6 +93,7 @@ const languageTranslations = {
     nameHeading: "नाम",
     emailHeading: "ईमेल",
     emailVerifiedHeading: "ईमेल सत्यापित हुआ",
+    adminText: "व्यवस्थापक (परीक्षण)",
   },
   spanish: {
     websiteOwner: "Ishant Kushwaha",
@@ -140,6 +142,7 @@ const languageTranslations = {
     nameHeading: "Nombre",
     emailHeading: "Correo electrónico",
     emailVerifiedHeading: "Correo Electrónico Verificado",
+    adminText: "Administrador (prueba)",
   },
 };
 

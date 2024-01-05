@@ -14,6 +14,8 @@ import WatchList from "./Components/Watchlist/WatchList";
 
 import ErrorBoundaryCustom from "./Components/ErrorBoundary/ErrorBoundaryCustom";
 import ErrorBoundaryLibrary from "./Components/ErrorBoundary/ErrorBoundaryLibrary";
+import Admin from "./Components/Admin/Admin";
+import IsAdminUser from "./Components/Admin/IsAdminUser";
 
 // import Profile from "./Components/Profile";
 const Profile = lazy(() => import("./Components/Profile"));
@@ -58,6 +60,14 @@ const appRouter = createBrowserRouter([
           <Suspense fallback={"Loading..."}>
             <Profile />
           </Suspense>
+        ),
+      },
+      {
+        path: "/admin",
+        element: (
+          <IsAdminUser>
+            <Admin />
+          </IsAdminUser>
         ),
       },
     ],
