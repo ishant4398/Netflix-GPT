@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const ErrorBoundaryCustom = ({ children }) => {
-  const [hasError, setHasError] = useState(false);
-  const [error, setError] = useState(null);
-  const [errorInfo, setErrorInfo] = useState(null);
-
-  useEffect(() => {
-    const handleError = (error, errorInfo) => {
-      console.error("Error caught by Error Boundary:", error, errorInfo);
-      setError(error);
-      setErrorInfo(errorInfo);
-      setHasError(true);
-      // You can also log the error to an error reporting service
-    };
-
-    window.addEventListener("error", handleError);
-    return () => {
-      window.removeEventListener("error", handleError);
-    };
-  }, []);
-
-  if (hasError) {
-    return (
-      <div>
-        <h1>Something went wrong.</h1>
-        {/* Display error details if needed */}
-        {error && <p>Error: {error.toString()}</p>}
-        {errorInfo && <p>{errorInfo.componentStack}</p>}
-      </div>
-    );
+class ErrorBoundaryCustom extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
   }
 
-  return children;
-};
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    console.error("Caught an error:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return (
+        <div className="p-8 bg-black h-screen text-white">
+          <h1 className="text-2xl font-bold">Error</h1>
+          (ErrorBoundaryCustom)
+          <h1 className="my-1 py-1">Something went wrong.</h1>
+          <pre className="my-2 py-1 italic whitespace-pre-wrap">
+            - "Don't be sad, Take a break and have a cup of coffee ☕! We will
+            fix it soon 😉"
+          </pre>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
 
 export default ErrorBoundaryCustom;

@@ -21,7 +21,11 @@ const Profile = lazy(() => import("./Components/Profile"));
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Body />,
+    element: (
+      <ErrorBoundaryLibrary>
+        <Body />
+      </ErrorBoundaryLibrary>
+    ),
     errorElement: <Error />,
     children: [
       {

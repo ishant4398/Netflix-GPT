@@ -11,20 +11,12 @@ const MovieCard = ({ movie }) => {
   // Applying Popover, Event Delegation and Debouncing on mouse over and mouse out events
   const isPopoverOpen = usePopoverEvents(movieCardRef);
 
-  const handleNavToMovieInfo = () => {
-    navigate("/movieInfo/" + id);
-  };
-
   const { id, poster_path, title } = movie;
 
   if (!poster_path || !title) return;
 
   return (
-    <div
-      className="w-64 mr-7 mb-4 cursor-pointer"
-      ref={movieCardRef}
-      onClick={handleNavToMovieInfo}
-    >
+    <div className="w-64 mr-7 mb-4 cursor-pointer" ref={movieCardRef}>
       {!isPopoverOpen ? (
         <div>
           <img
