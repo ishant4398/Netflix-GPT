@@ -42,6 +42,9 @@ const languageTranslations = {
     profileText: "Profile",
     notAddedyetText: "You haven't added yet!",
     activityHeading: "Your's Activity",
+    nameHeading: "Name",
+    emailHeading: "Email",
+    emailVerifiedHeading: "Email Verified",
   },
   hindi: {
     websiteOwner: "इशांत कुशवाह",
@@ -86,6 +89,9 @@ const languageTranslations = {
     profileText: "प्रोफ़ाइल",
     notAddedyetText: "आपने अभी तक नहीं जोड़ा है!",
     activityHeading: "आपकी गतिविधि",
+    nameHeading: "नाम",
+    emailHeading: "ईमेल",
+    emailVerifiedHeading: "ईमेल सत्यापित हुआ",
   },
   spanish: {
     websiteOwner: "Ishant Kushwaha",
@@ -131,6 +137,9 @@ const languageTranslations = {
     profileText: "Perfil",
     notAddedyetText: "¡Aún no has agregado!",
     activityHeading: "Tu actividad",
+    nameHeading: "Nombre",
+    emailHeading: "Correo electrónico",
+    emailVerifiedHeading: "Correo Electrónico Verificado",
   },
 };
 
