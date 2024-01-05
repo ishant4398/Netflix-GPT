@@ -3,12 +3,12 @@ import { signOutUser } from "../../Utils/Authentication/authentication";
 import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 import languageTranslations from "../../Utils/languageTranslations";
 import { IMG_USER_ICON_URL } from "../../Utils/constants";
-import { useSelector } from "react-redux";
 import useUserPopoverEvents from "../../Utils/Hooks/useUserPopoverEvents";
 import { useNavigate } from "react-router-dom";
+import useGetCurrentUser from "../../Utils/Hooks/useGetCurrentUser";
 
 const UserDropdown = () => {
-  const currentUser = useSelector((store) => store.user);
+  const currentUser = useGetCurrentUser();
   const currentLang = useGetCurrentLanguage();
   const userDropdownContainerRef = useRef(null);
   const showUserPopup = useUserPopoverEvents(userDropdownContainerRef);
@@ -20,12 +20,12 @@ const UserDropdown = () => {
     signOutUser();
   };
 
-  const handleWatchList = () => {
+  const navToWatchList = () => {
     navigate("/watchlist");
   };
 
-  const navToHome = () => {
-    navigate("/browse");
+  const navToProfile = () => {
+    navigate("/profile");
   };
 
   return (
@@ -42,11 +42,14 @@ const UserDropdown = () => {
         <ul className="absolute z-10 shadow-md w-auto h-auto rounded-lg bg-gray-800 min-w-[138px] mt-9 pb-3">
           <li
             className="text-white font-bold cursor-pointer pt-3 text-center"
-            onClick={handleWatchList}
+            onClick={navToWatchList}
           >
             {languageTranslations[currentLang]?.watchlistText}
           </li>
-          <li className="text-white font-bold cursor-pointer pt-3 text-center">
+          <li
+            className="text-white font-bold cursor-pointer pt-3 text-center"
+            onClick={navToProfile}
+          >
             {languageTranslations[currentLang]?.profileText}
           </li>
           <li

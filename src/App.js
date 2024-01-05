@@ -1,6 +1,7 @@
 import "./App.css";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import Body from "./Components/Body";
 import store from "./Utils/store";
 import Login from "./Components/Authentication/Login";
@@ -13,6 +14,9 @@ import WatchList from "./Components/Watchlist/WatchList";
 
 import ErrorBoundaryCustom from "./Components/ErrorBoundary/ErrorBoundaryCustom";
 import ErrorBoundaryLibrary from "./Components/ErrorBoundary/ErrorBoundaryLibrary";
+
+// import Profile from "./Components/Profile";
+const Profile = lazy(() => import("./Components/Profile"));
 
 const appRouter = createBrowserRouter([
   {
@@ -43,6 +47,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/watchlist",
         element: <WatchList />,
+      },
+      {
+        path: "/profile",
+        element: (
+          <Suspense fallback={"Loading..."}>
+            <Profile />
+          </Suspense>
+        ),
       },
     ],
   },

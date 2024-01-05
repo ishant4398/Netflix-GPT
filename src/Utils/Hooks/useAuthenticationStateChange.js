@@ -10,13 +10,14 @@ const useAuthenticationStateChange = () => {
   const navigate = useNavigate();
 
   const addUserToRedux = (user) => {
-    const { uid, email, displayName, photoURL } = user;
+    const { uid, email, displayName, photoURL, emailVerified } = user;
 
     const userObj = {
       uid: uid,
       email: email,
       displayName: displayName,
       photoURL: photoURL,
+      emailVerified: emailVerified,
     };
 
     dispatch(addUser(userObj));

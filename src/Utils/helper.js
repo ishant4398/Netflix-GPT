@@ -38,3 +38,12 @@ export const formatRuntime = (minutes) => {
     return `${remainingMinutes}m`;
   }
 };
+
+// export const getLocalZoneTime = (timestamp = null) => {
+//   if (!timestamp) return null;
+
+//   const ISToffsetMinutes = 330; // IST is UTC+5:30, so 5 hours 30 minutes = 5 * 60 + 30 = 330 minutes
+//   const date = new Date(timestamp + ISToffsetMinutes * 60 * 1000); // Adding the offset directly and converting it into miliseconds for timestamp
+
+//   return date.toString();
+// };
