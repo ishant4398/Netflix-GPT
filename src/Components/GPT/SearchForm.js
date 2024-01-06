@@ -10,6 +10,8 @@ import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 
 const SearchForm = () => {
   const [showExample, setShowExample] = useState(false);
+  const [shouldCallSearchAPI, setShouldCallSearchAPI] = useState(true);
+
   const currentLang = useGetCurrentLanguage();
   const GPT_Search_Results = useSelector((store) => store.gpt.searchResults);
   const searchInputRef = useRef();
@@ -57,6 +59,7 @@ const SearchForm = () => {
   const getGPTSearchResults = async () => {
     const searchQuery = searchInputRef.current.value.trim();
     const GPT_Query = `Act as a movie recommended system and suggest me movies for the following query: "${searchQuery}". Only give 5 movies as a result and in comma separated format according to the given example ahead. Example: Don,Sholay,Andaz apna apna,Main hoon na,Golmaal`;
+    console.log("Search GPT API Call");
     await dispatch(fetchGPT_SearchResults(GPT_Query));
   };
 
@@ -64,8 +67,14 @@ const SearchForm = () => {
     const searchValue = searchInputRef.current.value.trim();
     if (searchValue) {
       setShowExample(false);
-      navigate("?searchQuery=" + searchValue);
-      await getGPTSearchResults();
+      if (shouldCallSearchAPI) {
+        navigate("?searchQuery=" + searchValue);
+        setShouldCallSearchAPI(false);
+        await getGPTSearchResults();
+        setTimeout(() => {
+          setShouldCallSearchAPI(true);
+        }, 500);
+      }
     }
   };
 
@@ -85,7 +94,9 @@ const SearchForm = () => {
             }
           ></input>
           <button
-            className="col-span-4 md:col-span-2 p-2 mx-4 bg-red-700 text-white font-semibold rounded-md"
+            // className="col-span-4 md:col-span-2 p-2 mx-4 bg-red-700 text-white font-semibold rounded-md"
+            className="col-span-4 md:col-span-2 p-2 mx-4 bg-red-700 text-white font-semibold rounded-md disabled:opacity-50"
+            disabled={!shouldCallSearchAPI}
             onClick={handleSearchClick}
           >
             {languageTranslations[currentLang]?.gptSearchButton}

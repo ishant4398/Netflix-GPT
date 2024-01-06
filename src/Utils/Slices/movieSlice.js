@@ -111,9 +111,21 @@ const movieSlice = createSlice({
         const searchResults = action.payload;
 
         const moviesArr = searchResults?.reduce((acc, curr) => {
-          if (curr.results?.length) {
-            acc = [...acc, ...curr.results];
+          const movies = curr?.results;
+
+          // Only add unique movies
+          if (movies.length) {
+            movies.forEach((movie) => {
+              const isMovieAlreadyExists = acc.some(
+                (accMovie) => accMovie.id === movie.id
+              );
+
+              if (!isMovieAlreadyExists) {
+                acc = [...acc, movie];
+              }
+            });
           }
+
           return acc;
         }, []);
 

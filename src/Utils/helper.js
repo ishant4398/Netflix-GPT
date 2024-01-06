@@ -39,6 +39,19 @@ export const formatRuntime = (minutes) => {
   }
 };
 
+// export const getUniqueMovies = (allMovies, newMovies) => {
+//   newMovies.forEach((newMovie) => {
+//     const isMovieAlreadyExists = allMovies.some(
+//       (movie) => movie.id === newMovie.id
+//     );
+
+//     if (!isMovieAlreadyExists) {
+//       allMovies = [...allMovies, newMovie];
+//     }
+//   });
+//   return allMovies;
+// };
+
 // export const getLocalZoneTime = (timestamp = null) => {
 //   if (!timestamp) return null;
 
