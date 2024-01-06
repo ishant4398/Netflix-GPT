@@ -7,59 +7,27 @@ import {
 } from "../../Utils/thunks";
 import { useNavigate } from "react-router";
 import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
+import useGetTMDBSearchResults from "../../Utils/Hooks/useGetTMDBSearchResults";
 
 const SearchForm = () => {
   const [showExample, setShowExample] = useState(false);
   const [shouldCallSearchAPI, setShouldCallSearchAPI] = useState(true);
 
   const currentLang = useGetCurrentLanguage();
-  const GPT_Search_Results = useSelector((store) => store.gpt.searchResults);
   const searchInputRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useGetTMDBSearchResults(searchInputRef);
 
   useEffect(() => {
     setShowExample(true);
   }, []);
 
-  useEffect(() => {
-    const searchValue = searchInputRef.current.value.trim();
-
-    if (searchValue) {
-      let TMDB_SearchQuery = "";
-
-      // Check if GPT_Search_Results contains unwanted terms
-      const hasUnwantedTerms = checkForUnwantedTerms(GPT_Search_Results);
-
-      if (!hasUnwantedTerms) {
-        TMDB_SearchQuery = GPT_Search_Results;
-      } else {
-        TMDB_SearchQuery = searchValue.split();
-      }
-
-      getTMDBSearchResult(TMDB_SearchQuery);
-    }
-  }, [GPT_Search_Results]);
-
-  const checkForUnwantedTerms = (GPT_Search_Results) => {
-    const unwantedTerms = ["sorry", "apologies", "apologize", "unfortunately"];
-    const words = GPT_Search_Results?.join("").toLowerCase().split(" ");
-
-    const hasUnwantedTerms = unwantedTerms.some((word) =>
-      words.includes(word.toLowerCase())
-    );
-    return hasUnwantedTerms;
-  };
-
-  // TMDB_SearchQuery = ['Andaz Apna Apna', 'Chupke Chupke', 'Golmaal', 'Padosan', 'Chashme Buddoor']
-  const getTMDBSearchResult = async (TMDB_SearchQuery) => {
-    await dispatch(fetchMovieSearchResults(TMDB_SearchQuery));
-  };
-
   const getGPTSearchResults = async () => {
     const searchQuery = searchInputRef.current.value.trim();
+    navigate("?searchQuery=" + searchQuery);
     const GPT_Query = `Act as a movie recommended system and suggest me movies for the following query: "${searchQuery}". Only give 5 movies as a result and in comma separated format according to the given example ahead. Example: Don,Sholay,Andaz apna apna,Main hoon na,Golmaal`;
-    console.log("Search GPT API Call");
     await dispatch(fetchGPT_SearchResults(GPT_Query));
   };
 
@@ -68,7 +36,6 @@ const SearchForm = () => {
     if (searchValue) {
       setShowExample(false);
       if (shouldCallSearchAPI) {
-        navigate("?searchQuery=" + searchValue);
         setShouldCallSearchAPI(false);
         await getGPTSearchResults();
         setTimeout(() => {

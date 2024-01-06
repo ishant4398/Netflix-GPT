@@ -39,6 +39,16 @@ export const formatRuntime = (minutes) => {
   }
 };
 
+export const checkForUnwantedTerms = (searchResults) => {
+  const unwantedTerms = ["sorry", "apologies", "apologize", "unfortunately"];
+  const words = searchResults?.join("").toLowerCase().split(" ");
+
+  const hasUnwantedTerms = unwantedTerms.some((word) =>
+    words.includes(word.toLowerCase())
+  );
+  return hasUnwantedTerms;
+};
+
 // export const getUniqueMovies = (allMovies, newMovies) => {
 //   newMovies.forEach((newMovie) => {
 //     const isMovieAlreadyExists = allMovies.some(
