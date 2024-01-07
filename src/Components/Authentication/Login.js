@@ -1,6 +1,6 @@
 import React from "react";
-import SignIn_Form from "./SignIn_Form";
 import { BACKGROUND_IMAGE_URL } from "../../Utils/constants";
+import SignInForm from "./SignInForm";
 
 const Login = () => {
   return (
@@ -12,7 +12,7 @@ const Login = () => {
           alt="netflix-cover-image"
         />
       </div>
-      <SignIn_Form />
+      <SignInForm />
     </div>
   );
 };

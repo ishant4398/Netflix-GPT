@@ -6,7 +6,7 @@ import { addUser } from "../../Utils/Slices/userSlice";
 import languageTranslations from "../../Utils/languageTranslations";
 import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 
-const SignIn_Form = () => {
+const SignInForm = () => {
   const errObj = {
     name: null,
     email: null,
@@ -144,4 +144,4 @@ const SignIn_Form = () => {
   );
 };
 
-export default SignIn_Form;
+export default SignInForm;
