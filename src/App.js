@@ -11,11 +11,12 @@ import Error from "./Components/Error";
 import WatchMovie from "./Components/Movies/WatchMovie";
 import MovieInfo from "./Components/Movies/MovieInfo";
 import WatchList from "./Components/Watchlist/WatchList";
+import Admin from "./Components/Admin/Admin";
+import IsAdminUser from "./Components/Admin/IsAdminUser";
+import Loader from "./Components/Shimmer/Loader";
 
 import ErrorBoundaryCustom from "./Components/ErrorBoundary/ErrorBoundaryCustom";
 import ErrorBoundaryLibrary from "./Components/ErrorBoundary/ErrorBoundaryLibrary";
-import Admin from "./Components/Admin/Admin";
-import IsAdminUser from "./Components/Admin/IsAdminUser";
 
 // import Profile from "./Components/Profile";
 const Profile = lazy(() => import("./Components/Profile"));
@@ -58,7 +59,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/profile",
         element: (
-          <Suspense fallback={"Loading..."}>
+          <Suspense fallback={<Loader />}>
             <Profile />
           </Suspense>
         ),
@@ -66,7 +67,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: (
-          <Suspense fallback={"Loading..."}>
+          <Suspense fallback={<Loader />}>
             <Contact />
           </Suspense>
         ),
