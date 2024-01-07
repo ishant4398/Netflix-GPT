@@ -39,7 +39,11 @@ const UserDropdown = () => {
           {formatDisplayName}
         </p>
         <button className="py-2 m-4 my-0 mr-6 pt-1">
-          <img className="w-[30px] h-[30px]" src={IMG_USER_ICON_URL}></img>
+          <img
+            className="w-[30px] h-[30px]"
+            src={IMG_USER_ICON_URL}
+            alt="userIcon"
+          ></img>
         </button>
       </div>
       {showUserPopup && (

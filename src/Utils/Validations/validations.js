@@ -1,5 +1,3 @@
-import { flushSync } from "react-dom";
-
 export const validateSignIn = (isSignIn, email, password, name, setError) => {
   let isValid = true;
 

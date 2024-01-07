@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import languageTranslations from "../../Utils/languageTranslations";
-import {
-  fetchGPT_SearchResults,
-  fetchMovieSearchResults,
-} from "../../Utils/thunks";
+import { fetchGPT_SearchResults } from "../../Utils/thunks";
 import { useNavigate } from "react-router";
 import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 import useGetTMDBSearchResults from "../../Utils/Hooks/useGetTMDBSearchResults";

@@ -37,7 +37,7 @@ const useGetDataFromLocalStorage = () => {
         dispatch(updateLikedMovies(likedMovies));
       }
     }
-  }, [user]);
+  }, [userId]);
 };
 
 export default useGetDataFromLocalStorage;

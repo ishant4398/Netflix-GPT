@@ -1,9 +1,6 @@
 import React from "react";
-import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
 
 const ActivityButtons = ({ buttonList, selectedStatus, setStatus }) => {
-  const currentLang = useGetCurrentLanguage();
-
   return (
     <div className=" bg-black rounded-t-lg ">
       {buttonList.map((element) => (
