@@ -62,3 +62,7 @@ export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY;
 export const OPEN_AI_GPT_MODEL = "gpt-3.5-turbo";
 
 export const WEBSITE_OWNER_EMAIL = "ishantkushwaha98@gmail.com";
+
+// For Sign In as Test User feature
+export const TEST_USER_EMAIL = "test001@rediffmail.com";
+export const TEST_USER_PASSWORD = "Test@123";
