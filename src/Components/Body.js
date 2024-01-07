@@ -14,7 +14,8 @@ const Body = () => {
   const isWatchComponent = currentPath.includes("/watch/");
 
   return (
-    <div className="flex flex-col">
+    // <div className="flex flex-col">
+    <div className="flex flex-col bg-black h-screen">
       <ScrollToTop />
       {!isWatchComponent && <Header />}
       <Outlet />
