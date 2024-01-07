@@ -7,7 +7,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => {
     <div className="p-8 bg-black h-screen text-white">
       <h1 className="text-2xl font-bold">Error</h1>
       <h1 className="my-1 py-1">Something went wrong.</h1>
-      <p className="my-1 py-1">{error.message}</p>
+      {/* <p className="my-1 py-1">{error.message}</p> */}
       <pre className="my-2 py-1 italic whitespace-pre-wrap">
         - "Don't be sad, Take a break and have a cup of coffee ☕! We will fix
         it soon 😉"

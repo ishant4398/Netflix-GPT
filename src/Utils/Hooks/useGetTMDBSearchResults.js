@@ -3,11 +3,12 @@ import { checkForUnwantedTerms } from "../helper";
 import { useEffect } from "react";
 import { fetchMovieSearchResults } from "../thunks";
 
-const useGetTMDBSearchResults = (searchValue) => {
+const useGetTMDBSearchResults = (searchInputRef) => {
   const GPT_Search_Results = useSelector((store) => store.gpt.searchResults);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const searchValue = searchInputRef?.current?.value?.trim();
     if (searchValue) {
       let TMDB_SearchQuery = "";
 
