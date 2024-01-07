@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../../Utils/Slices/userSlice";
 import languageTranslations from "../../Utils/languageTranslations";
 import useGetCurrentLanguage from "../../Utils/Hooks/useGetCurrentLanguage";
-import { TEST_USER_EMAIL, TEST_USER_PASSWORD } from "../../Utils/constants";
+import { DEMO_USER_EMAIL, DEMO_USER_PASSWORD } from "../../Utils/constants";
 
 const SignInForm = () => {
   const errObj = {
@@ -80,8 +80,8 @@ const SignInForm = () => {
   };
 
   const handleSignInAsTestUser = () => {
-    emailRef.current.value = TEST_USER_EMAIL;
-    passwordRef.current.value = TEST_USER_PASSWORD;
+    emailRef.current.value = DEMO_USER_EMAIL;
+    passwordRef.current.value = DEMO_USER_PASSWORD;
     handleSignInAndSignUp();
   };
 
@@ -146,7 +146,7 @@ const SignInForm = () => {
             className="w-full mt-5 px-4 py-3 rounded-md bg-red-700"
             onClick={handleSignInAsTestUser}
           >
-            {languageTranslations[currentLang].signInAsTestUserText}
+            {languageTranslations[currentLang].signInAsDemoUserText}
           </button>
         )}
 

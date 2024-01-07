@@ -48,7 +48,7 @@ const languageTranslations = {
     emailVerifiedHeading: "Email Verified",
     adminText: "Admin (Test)",
     contactText: "Contact us",
-    signInAsTestUserText: "Test User",
+    signInAsDemoUserText: "Demo User",
   },
   hindi: {
     websiteOwnerHeading: "वेबसाइट का मालिक",
@@ -99,7 +99,7 @@ const languageTranslations = {
     emailVerifiedHeading: "ईमेल सत्यापित हुआ",
     adminText: "व्यवस्थापक (परीक्षण)",
     contactText: "संपर्क करें",
-    signInAsTestUserText: "परीक्षण उपयोगकर्ता के रूप में साइन इन करें",
+    signInAsDemoUserText: "डेमो उपयोगकर्ता",
   },
   spanish: {
     websiteOwnerHeading: "Dueña del sitio web",
@@ -151,7 +151,7 @@ const languageTranslations = {
     emailVerifiedHeading: "Correo Electrónico Verificado",
     adminText: "Administrador (prueba)",
     contactText: "Contacto",
-    signInAsTestUserText: "Iniciar sesión como usuario de prueba",
+    signInAsDemoUserText: "Usuario de demostración",
   },
 };
 
