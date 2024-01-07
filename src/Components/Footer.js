@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div className="bottom-0">
       <h1 className="font-semibold text-white bg-black px-12 pb-4">
-        @{languageTranslations[currentLang].websiteOwner}
+        @{languageTranslations[currentLang].websiteOwnerName}
       </h1>
     </div>
   );

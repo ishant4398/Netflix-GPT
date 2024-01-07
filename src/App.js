@@ -19,6 +19,7 @@ import IsAdminUser from "./Components/Admin/IsAdminUser";
 
 // import Profile from "./Components/Profile";
 const Profile = lazy(() => import("./Components/Profile"));
+const Contact = lazy(() => import("./Components/Contact"));
 
 const appRouter = createBrowserRouter([
   {
@@ -59,6 +60,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense fallback={"Loading..."}>
             <Profile />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/contact",
+        element: (
+          <Suspense fallback={"Loading..."}>
+            <Contact />
           </Suspense>
         ),
       },

@@ -28,6 +28,10 @@ const UserDropdown = () => {
     navigate("/profile");
   };
 
+  const navToContact = () => {
+    navigate("/contact");
+  };
+
   const navToAdmin = () => {
     navigate("/admin");
   };
@@ -59,6 +63,12 @@ const UserDropdown = () => {
             onClick={navToProfile}
           >
             {languageTranslations[currentLang]?.profileText}
+          </li>
+          <li
+            className="text-white font-bold cursor-pointer pt-3 text-center"
+            onClick={navToContact}
+          >
+            {languageTranslations[currentLang]?.contactText}
           </li>
           {/* <li
             className="text-white font-bold cursor-pointer pt-3 text-center"

@@ -1,6 +1,7 @@
 const languageTranslations = {
   en: {
-    websiteOwner: "Ishant Kushwaha",
+    websiteOwnerHeading: "Website Owner",
+    websiteOwnerName: "Ishant Kushwaha",
     gptSearchPlaceholderValue: "Search your movies using AI",
     // gptSearchPlaceholderValue: "Search movies",
     gptSearchButton: "Search",
@@ -46,9 +47,11 @@ const languageTranslations = {
     emailHeading: "Email",
     emailVerifiedHeading: "Email Verified",
     adminText: "Admin (Test)",
+    contactText: "Contact us",
   },
   hindi: {
-    websiteOwner: "इशांत कुशवाह",
+    websiteOwnerHeading: "वेबसाइट का मालिक",
+    websiteOwnerName: "इशांत कुशवाह",
     gptSearchPlaceholderValue: "AI का उपयोग करके अपनी फिल्में खोजें",
     // gptSearchPlaceholderValue: "फिल्में खोजें",
     gptSearchButton: "खोज",
@@ -94,9 +97,11 @@ const languageTranslations = {
     emailHeading: "ईमेल",
     emailVerifiedHeading: "ईमेल सत्यापित हुआ",
     adminText: "व्यवस्थापक (परीक्षण)",
+    contactText: "संपर्क करें",
   },
   spanish: {
-    websiteOwner: "Ishant Kushwaha",
+    websiteOwnerHeading: "Dueña del sitio web",
+    websiteOwnerName: "Ishant Kushwaha",
     gptSearchPlaceholderValue: "Busca tus películas usando IA",
     // gptSearchPlaceholderValue: "buscar películas",
     gptSearchButton: "Buscar",
@@ -143,6 +148,7 @@ const languageTranslations = {
     emailHeading: "Correo electrónico",
     emailVerifiedHeading: "Correo Electrónico Verificado",
     adminText: "Administrador (prueba)",
+    contactText: "Contacto",
   },
 };
 
