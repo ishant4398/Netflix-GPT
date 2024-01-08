@@ -24,7 +24,6 @@ export const convertDateFormat = (inputDateStr) => {
 
   // Format the date
   const formattedDate = `${day} ${months[monthIndex]} ${year}`;
-
   return formattedDate;
 };
 

@@ -14,6 +14,7 @@ export const validateSignIn = (isSignIn, email, password, name, setError) => {
     name: isSignIn || isNameValid ? null : "Please enter a valid name",
   }));
 
+  // If Sign Up then Name is mandatory field
   isValid = isEmailValid && isPasswordValid && (isSignIn || isNameValid);
 
   return isValid;
