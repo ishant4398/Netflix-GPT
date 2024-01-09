@@ -7,15 +7,15 @@ const useGetTMDBSearchResults = (searchInputRef) => {
   const GPT_Search_Results = useSelector((store) => store.gpt.searchResults);
   const dispatch = useDispatch();
 
+  const searchValue = searchInputRef?.current?.value?.trim();
+
   useEffect(() => {
-    const searchValue = searchInputRef?.current?.value?.trim();
     if (searchValue) {
       let TMDB_SearchQuery = "";
-
       // Check if GPT_Search_Results contains unwanted terms
       const hasUnwantedTerms = checkForUnwantedTerms(GPT_Search_Results);
 
-      if (!hasUnwantedTerms) {
+      if (!hasUnwantedTerms && GPT_Search_Results.length) {
         TMDB_SearchQuery = GPT_Search_Results;
       } else {
         TMDB_SearchQuery = searchValue.split();
@@ -23,7 +23,7 @@ const useGetTMDBSearchResults = (searchInputRef) => {
 
       getTMDBSearchResult(TMDB_SearchQuery);
     }
-  }, [GPT_Search_Results]);
+  }, [GPT_Search_Results, searchValue]);
 
   // TMDB_SearchQuery = ['Andaz Apna Apna', 'Chupke Chupke', 'Golmaal', 'Padosan', 'Chashme Buddoor']
   const getTMDBSearchResult = async (TMDB_SearchQuery) => {
