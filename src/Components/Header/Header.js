@@ -1,6 +1,6 @@
 import React from "react";
-import Netflix_Logo from "../../Assets/Netflix_Logo.png";
-import { useSelector } from "react-redux";
+// import Netflix_Logo from "../../Assets/Netflix_Logo.png";
+import Netflix_Logo from "../../Assets/Moviesflix-GPT.png";
 import UserDropdown from "./UserDropdown";
 import LanguageDropdown from "./LanguageDropdown";
 import GPTSearch from "./GPTSearch";
@@ -17,7 +17,8 @@ const Header = () => {
 
   return (
     <div className="absolute w-full px-4 py-1 bg-gradient-to-b from-black z-20 flex justify-between">
-      <img className="w-52 m-2" src={Netflix_Logo} alt="logo" />
+      {/* <img className="w-52 m-2" src={Netflix_Logo} alt="logo" /> */}
+      <img className="w-[295px] h-11 m-7 mt-10" src={Netflix_Logo} alt="logo" />
       <div className="flex flex-row">
         <LanguageDropdown />
         {currentUser && (

@@ -9,7 +9,7 @@ const Login = () => {
         <img
           className="h-screen object-cover md:h-auto"
           src={BACKGROUND_IMAGE_URL}
-          alt="netflix-cover-image"
+          alt="Moviesflix-cover-image"
         />
       </div>
       <SignInForm />

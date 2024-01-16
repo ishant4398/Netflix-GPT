@@ -1,6 +1,6 @@
-**Netflix-GPT**
+**Moviesflix-GPT**
 
-Netflix-GPT is a React-based web platform designed for streaming your favorite movies and TV shows. Leveraging cutting-edge AI-powered search and movie recommendations to enhance user experience.
+Moviesflix-GPT is a React-based web platform designed for streaming your favorite movies and TV shows. Leveraging cutting-edge AI-powered search and movie recommendations to enhance user experience.
 
 **Key Features:**
 
@@ -23,7 +23,6 @@ Netflix-GPT is a React-based web platform designed for streaming your favorite m
 🚀 Incorporates Event Delegation, Debouncing, and Throttling for smoother user interactions.
 
 🛠 Robust Error Handling: Comprehensive error handling and form validations to ensure data integrity.
-
 
 **👉 Dive in and explore:-**
 
