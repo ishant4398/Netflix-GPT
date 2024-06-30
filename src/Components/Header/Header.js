@@ -1,6 +1,5 @@
 import React from "react";
 import Netflix_Logo from "../../Assets/Netflix_Logo.png";
-import { useSelector } from "react-redux";
 import UserDropdown from "./UserDropdown";
 import LanguageDropdown from "./LanguageDropdown";
 import GPTSearch from "./GPTSearch";
